@@ -1,0 +1,309 @@
+/**
+ * Minns boat detail + in-place booking dialog.
+ * A native modal stays centered in the viewport, with its own scroll area.
+ */
+
+/* Click anywhere on a boat row; retain the independent booking link on top. */
+#fleet .boat {
+  position: relative;
+  cursor: pointer;
+}
+#fleet .boat__surface-trigger {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+#fleet .boat__surface-trigger:focus-visible {
+  outline: 3px solid #087f7c;
+  outline-offset: 3px;
+}
+#fleet .boat__right a[data-boat] {
+  position: relative;
+  z-index: 2;
+}
+@media (hover: hover) and (pointer: fine) {
+  #fleet .boat:hover {
+    border-color: #91c4bc;
+  }
+}
+
+/* Non-scrollable shell; only the contents of the dialog can scroll. */
+.boat-dialog:not([open]) {
+  display: none !important;
+}
+.boat-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(820px, calc(100vw - 32px));
+  max-width: none;
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  color: #0b1e27;
+  background: #fff;
+  border: 1px solid #c8dbd7;
+  border-radius: 12px;
+  box-shadow: 0 24px 72px rgba(6, 26, 34, .22);
+}
+.boat-dialog::backdrop {
+  background: rgba(4, 20, 28, .76);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+}
+.boat-dialog__shell {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 32px);
+  min-height: 0;
+  overflow: hidden;
+}
+.boat-dialog__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
+  gap: 12px;
+  min-height: 60px;
+  padding: 9px 22px;
+  border-bottom: 1px solid #dfebe8;
+  background: #fff;
+}
+.boat-dialog__eyebrow {
+  color: #526e72;
+  font: 700 .74rem/1.4 var(--body);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.boat-dialog__close,
+.boat-dialog__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #dceae7;
+  border-radius: 8px;
+  background: #f4f9f7;
+  color: #0b1e27;
+  cursor: pointer;
+  font: 700 .875rem/1.3 var(--body);
+}
+.boat-dialog__close svg,
+.boat-dialog__back svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.boat-dialog__scroll {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.boat-dialog__figure {
+  position: relative;
+  height: clamp(210px, 34vh, 330px);
+  margin: 0;
+  overflow: hidden;
+  background: #e4f1ee;
+}
+.boat-dialog__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.boat-dialog__size {
+  position: absolute;
+  left: 20px;
+  bottom: 16px;
+  padding: 7px 12px;
+  background: rgba(11, 30, 39, .9);
+  color: #fff;
+  border-radius: 6px;
+  font: 700 1rem/1.3 var(--body);
+}
+.boat-dialog__content {
+  padding: 24px 28px 28px;
+}
+.boat-dialog__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 9px;
+  color: #087a76;
+  background: #e6f6f1;
+  border: 1px solid #cce9df;
+  border-radius: 6px;
+  font: 700 .75rem/1.3 var(--body);
+}
+.boat-dialog__content h2,
+.boat-dialog__booking h2 {
+  margin: 12px 0 16px;
+  color: #0b1e27;
+  font: 700 clamp(1.55rem, 3vw, 2.15rem)/1.2 var(--display);
+  overflow-wrap: anywhere;
+}
+.boat-dialog__specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.boat-dialog__specs span:not(:empty) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid #dceae7;
+  border-radius: 7px;
+  background: #f2f8f6;
+  font: 600 .875rem/1.3 var(--body);
+}
+.boat-dialog__description {
+  margin: 0 0 20px;
+  color: #4f666c;
+  font-size: .96rem;
+  line-height: 1.65;
+}
+.boat-dialog__price-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid #dceae7;
+}
+.boat-dialog__price-block strong {
+  font: 700 2rem/1.15 var(--display);
+  letter-spacing: -.035em;
+  font-variant-numeric: tabular-nums;
+}
+.boat-dialog__price-block > span {
+  color: #64797e;
+  font-size: .9rem;
+}
+.boat-dialog__price-block small {
+  flex-basis: 100%;
+  color: #64797e;
+  font-size: .85rem;
+}
+.boat-dialog__fine {
+  margin: 12px 0 20px;
+  color: #50696e;
+  font-size: .82rem;
+  line-height: 1.6;
+}
+.boat-dialog__primary {
+  display: flex;
+  width: 100%;
+  min-height: 54px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.boat-dialog__primary svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+.boat-dialog__booking {
+  padding: 22px 28px 28px;
+}
+.boat-dialog__back {
+  min-height: 42px;
+  padding: 8px 12px;
+  background: #fff;
+}
+.boat-dialog__booking h2 {
+  margin: 18px 0 8px;
+}
+.boat-dialog__booking-note {
+  color: #577075;
+  line-height: 1.6;
+  font-size: .91rem;
+  margin: 0 0 20px;
+}
+/* The existing wizard moves into this host; never duplicate its IDs or inputs. */
+.boat-dialog #boatModalWizardHost {
+  min-width: 0;
+}
+.boat-dialog #resForm {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: #0b1e27;
+  box-shadow: none;
+}
+.boat-dialog #resForm .wizard-status {
+  margin-bottom: 14px;
+}
+.boat-dialog #resForm .wizard-actions .btn {
+  min-height: 48px;
+}
+.boat-dialog :focus-visible {
+  outline: 3px solid #078e83;
+  outline-offset: 3px;
+}
+@media (max-width: 599px) {
+  .boat-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+  .boat-dialog__shell {
+    max-height: calc(100dvh - 20px);
+  }
+  .boat-dialog__toolbar {
+    min-height: 56px;
+    padding: 6px 14px;
+  }
+  .boat-dialog__eyebrow {
+    font-size: .69rem;
+    letter-spacing: .03em;
+  }
+  .boat-dialog__figure {
+    height: clamp(180px, 29vh, 230px);
+  }
+  .boat-dialog__size {
+    left: 14px;
+    bottom: 12px;
+  }
+  .boat-dialog__content {
+    padding: 20px 18px 24px;
+  }
+  .boat-dialog__booking {
+    padding: 16px 18px 24px;
+  }
+  .boat-dialog__content h2,
+  .boat-dialog__booking h2 {
+    font-size: 1.55rem;
+  }
+}
+@media (max-width: 359px) {
+  .boat-dialog__content,
+  .boat-dialog__booking {
+    padding-inline: 14px;
+  }
+  .boat-dialog__toolbar {
+    padding-inline: 10px;
+  }
+  .boat-dialog__eyebrow {
+    font-size: .65rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boat-dialog * {
+    scroll-behavior: auto !important;
+  }
+}
