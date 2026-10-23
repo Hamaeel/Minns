@@ -83,7 +83,7 @@
   display: block;
 }
 
-/* Small non-modal dropdown card anchored directly to the Menu control. */
+/* Frosted light dropdown card anchored below the Menu control. */
 .nav#nav .nav-dropdown {
   position: absolute;
   z-index: 5;
@@ -94,11 +94,13 @@
   overflow-x: hidden;
   overflow-y: auto;
   padding: 12px 16px 16px;
-  color: #fff;
-  background: #0b1e27;
-  border: 1px solid rgba(116, 224, 198, .28);
+  color: #0b1e27;
+  background: rgba(248, 253, 251, .84);
+  border: 1px solid rgba(11, 30, 39, .24);
   border-radius: 12px;
-  box-shadow: 0 16px 36px rgba(11, 30, 39, .18);
+  box-shadow: 0 8px 28px rgba(11, 30, 39, .10);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
   overscroll-behavior: contain;
 }
 .nav#nav .nav-dropdown[hidden] {
@@ -121,9 +123,9 @@
   width: 100%;
   min-height: 50px;
   padding: 12px 12px;
-  color: #eff7f4;
+  color: #0b1e27;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, .10);
+  border-bottom: 1px solid rgba(11, 30, 39, .11);
   border-radius: 6px;
   font: 500 1rem/1.45 var(--body);
   text-decoration: none;
@@ -135,8 +137,8 @@
 }
 .nav-dropdown__links a:hover,
 .nav-dropdown__links a:focus-visible {
-  background: rgba(116, 224, 198, .11);
-  color: var(--mint);
+  background: rgba(27, 159, 146, .12);
+  color: #087a76;
 }
 .nav-dropdown__cta {
   display: flex;
@@ -160,7 +162,7 @@
   background: #90e8d5;
 }
 .nav#nav .nav-dropdown :focus-visible {
-  outline: 2px solid var(--mint);
+  outline: 2px solid #087a76;
   outline-offset: 2px;
 }
 
