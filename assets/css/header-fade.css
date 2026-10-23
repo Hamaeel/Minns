@@ -1,0 +1,17 @@
+/* Soft backdrop follows the sticky header and obscures passing section text.
+   Transparent at both ends; brightest behind the navigation controls. */
+.nav::before{
+ content:"";
+ position:absolute;
+ z-index:-1;
+ pointer-events:none;
+ left:50%;
+ top:-74px;
+ transform:translateX(-50%);
+ width:100vw;
+ height:224px;
+ background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,.82) 25%,rgba(255,255,255,.98) 48%,rgba(255,255,255,.88) 66%,rgba(255,255,255,0) 100%);
+}
+@media(max-width:599px){
+ .nav::before{top:-62px;height:190px}
+}
