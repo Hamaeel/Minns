@@ -9,10 +9,10 @@
   const menu = document.getElementById("siteMenu");
   const reserve = document.getElementById("reserve");
   const bar = document.getElementById("mbar");
+  const fade = document.getElementById("mbarFade");
   const trigger = header?.querySelector(".nav__toggle");
-  const closeButton = menu?.querySelector(".nav-dropdown__close");
 
-  if (!header || !menu || !trigger || !closeButton) {
+  if (!header || !menu || !trigger) {
     return;
   }
 
@@ -43,10 +43,9 @@
     if (!bar || !reserve) return;
     const bounds = reserve.getBoundingClientRect();
     const reserveVisible = bounds.top < window.innerHeight && bounds.bottom > 0;
-    bar.classList.toggle(
-      "show",
-      window.scrollY > 500 && !reserveVisible
-    );
+    const shouldShow = window.scrollY > 500 && !reserveVisible;
+    bar.classList.toggle("show", shouldShow);
+    fade?.classList.toggle("show", shouldShow);
   }
 
   /**
@@ -77,10 +76,6 @@
     if (shouldOpen) {
       menu.querySelector("a")?.focus({ preventScroll: true });
     }
-  });
-
-  closeButton.addEventListener("click", () => {
-    setMenuOpen(false, true);
   });
 
   menu.querySelectorAll('a[href^="#"]').forEach((link) => {

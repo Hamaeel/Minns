@@ -47,6 +47,7 @@
 <link rel="stylesheet" href="assets/css/mobile-breathing-room.css">
 <link rel="stylesheet" href="assets/css/elevation-system.css">
 <link rel="stylesheet" href="assets/css/nav-dropdown.css">
+<link rel="stylesheet" href="assets/css/mobile-footer-fade.css">
 <script>document.documentElement.classList.add("js")</script>
 
 <script type="application/ld+json">
@@ -164,13 +165,6 @@
     <a class="btn btn--mint nav__book" href="#reserve" aria-label="Book a boat"><svg aria-hidden="true"><use href="#i-cal"/></svg><span class="nav__book-label">Book a boat</span><span class="nav__book-short" aria-hidden="true">Book</span></a>
   </div>
   <nav class="nav-dropdown" id="siteMenu" aria-label="Main navigation" hidden>
-    <div class="nav-dropdown__top">
-      <span class="nav-dropdown__eyebrow">Explore Minns</span>
-      <button class="nav-dropdown__close" type="button" aria-label="Close navigation menu">
-        <span>Close</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
     <ul class="nav-dropdown__links">
       <li><a href="#fleet">Boats &amp; prices</a></li>
       <li><a href="#harbour">Where to go</a></li>
@@ -585,22 +579,14 @@
   </div>
 </footer>
 
+<div class="mbar-fade" id="mbarFade" aria-hidden="true"></div>
 <div class="mbar" id="mbar">
   <a class="btn btn--glass" href="tel:+12423363483"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
   <a class="btn btn--mint" href="#reserve">Book a boat</a>
 </div>
 
 
-<div class="offer-popup" id="offerPopup" role="dialog" aria-modal="false" aria-labelledby="offerTitle" aria-describedby="offerDesc" hidden>
-  <button type="button" class="offer-popup__close" id="offerClose" aria-label="Close offer preview">×</button>
-  <span class="offer-popup__eyebrow">Offer preview · Demo only</span>
-  <h2 id="offerTitle">Your next Exuma adventure awaits</h2>
-  <p id="offerDesc">Sample promotional layout. No discount or limited-time offer is currently active.</p>
-  <div class="offer-popup__timer"><span>Demo countdown</span><strong id="offerCountdown" aria-label="Demo countdown">15:00</strong></div>
-  <a class="btn btn--mint" href="#reserve" id="offerBook">Explore booking</a>
-</div>
 
-<script src="assets/js/offer-popup.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/header-menu.js" defer></script>
 <script src="assets/js/booking-wizard.js" defer></script>
