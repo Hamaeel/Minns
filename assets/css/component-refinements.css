@@ -217,41 +217,42 @@
   flex: 1 1 160px;
 }
 
-/* Mobile: padded compact cards with consistent icon/text alignment. */
+/* Mobile: match desktop's icon → title → description hierarchy. */
 @media (max-width: 599px) {
   .feats,
   .steps {
-    gap: 12px;
+    gap: 14px;
   }
   .feats > *,
   .steps > * {
-    display: grid;
-    grid-template-columns: 44px minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
-    column-gap: 14px;
-    row-gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
     min-height: 0;
-    padding: 18px 16px;
-    align-items: start;
+    padding: 20px 18px;
   }
   .feats .ic,
   .steps .ic {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    margin: 0;
+    flex: none;
+    grid-column: auto;
+    grid-row: auto;
+    margin: 0 0 14px;
   }
   .feats h3,
   .steps h3 {
-    grid-column: 2;
-    grid-row: 1;
-    margin: 0;
-    font-size: 1.05rem;
+    grid-column: auto;
+    grid-row: auto;
+    margin: 0 0 6px;
+    font-size: 1.075rem;
+    line-height: 1.35;
   }
   .feats p,
   .steps p {
-    grid-column: 2;
-    grid-row: 2;
+    grid-column: auto;
+    grid-row: auto;
     font-size: 0.94rem;
+    line-height: 1.6;
   }
   #fleet .boats {
     gap: 12px;
@@ -306,8 +307,7 @@
 @media (max-width: 359px) {
   .feats > *,
   .steps > * {
-    padding: 16px 12px;
-    column-gap: 12px;
+    padding: 18px 16px;
   }
   #fleet .boat {
     padding: 16px 12px;
