@@ -324,36 +324,3 @@
     height: 62px;
   }
 }
-
-/* FAQ: compact optional control, while native details remain independently openable. */
-#faq .faq__controls {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 0 8px;
-}
-#faq .faq__expand-all {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 6px 10px;
-  border: 0;
-  border-radius: 7px;
-  background: transparent;
-  color: #087a76;
-  font: 700 .875rem/1.4 var(--body);
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-#faq .faq__expand-all:hover {
-  background: #e8f5f1;
-}
-#faq .faq__expand-all:focus-visible {
-  outline: 2px solid #087a76;
-  outline-offset: 3px;
-}
-/* The controls become the first child; keep the first FAQ row's top rule. */
-#faq .qa .faq__controls + details {
-  border-top: 1px solid var(--ui-card-border);
-}

@@ -60,28 +60,20 @@
 
   // Booking steps and email draft are initialized by booking-wizard.js.
 
-  // FAQ: native <details> remain independent, so opening another question
-  // never closes one already open. Offer an explicit open/close all control.
+  // FAQ: allow at most one question to remain open at any time.
+  // Shared <details name="minns-faq"> handles this natively in modern browsers;
+  // the toggle listener provides a graceful fallback for older browsers.
   var faqGroup = document.getElementById('faqAnswers');
-  var faqToggle = document.getElementById('faqExpandAll');
-  if (faqGroup && faqToggle) {
+  if (faqGroup) {
     var faqItems = Array.from(faqGroup.querySelectorAll('details'));
-    var syncFaqToggle = function () {
-      var allOpen = faqItems.length > 0 && faqItems.every(function (item) {
-        return item.open;
-      });
-      faqToggle.textContent = allOpen ? 'Collapse all' : 'Expand all';
-      faqToggle.setAttribute('aria-expanded', String(allOpen));
-    };
-    faqToggle.addEventListener('click', function () {
-      var shouldOpen = !faqItems.every(function (item) { return item.open; });
-      faqItems.forEach(function (item) { item.open = shouldOpen; });
-      syncFaqToggle();
-    });
     faqItems.forEach(function (item) {
-      item.addEventListener('toggle', syncFaqToggle);
+      item.addEventListener('toggle', function () {
+        if (!item.open) return;
+        faqItems.forEach(function (other) {
+          if (other !== item && other.open) other.open = false;
+        });
+      });
     });
-    syncFaqToggle();
   }
 
   // Guides tabs
