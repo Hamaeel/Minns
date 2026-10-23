@@ -1,0 +1,326 @@
+/*
+ * Minns Water Sports — shared component polish.
+ * Corrects desktop feature/step cards, fleet rows, FAQ panel and navigation logo.
+ * Loaded after legacy CSS to retain existing booking, mobile and theme behavior.
+ */
+:root {
+  --ui-card-border: #d6e5e2;
+  --ui-card-soft: #f3f8f7;
+  --ui-card-white: #fff;
+}
+
+/* Feature and how-it-works cards: give their contents an actual interior. */
+.feats,
+.steps {
+  gap: 20px;
+  align-items: stretch;
+}
+.feats > *,
+.steps > * {
+  min-width: 0;
+  min-height: 202px;
+  padding: 24px;
+  border: 1px solid var(--ui-card-border);
+  border-radius: 12px;
+  background: var(--ui-card-white);
+  box-shadow: none;
+}
+.feats > * {
+  background: var(--ui-card-soft);
+}
+.feats .ic,
+.steps .ic {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+  background: #e1f2ef;
+  color: var(--aqua);
+  border-radius: 9px;
+}
+.feats h3,
+.steps h3 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  overflow-wrap: break-word;
+}
+.feats p,
+.steps p {
+  margin: 0;
+  max-width: none;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--muted);
+  overflow-wrap: break-word;
+}
+#how .policy-line {
+  max-width: 960px;
+  margin-top: 32px;
+  padding-top: 22px;
+  line-height: 1.7;
+}
+
+/* Fleet: five independent, padded rows instead of one edge-to-edge block. */
+#fleet .boats {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  border-top: 0;
+}
+#fleet .boat {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px 18px;
+  min-width: 0;
+  min-height: 118px;
+  padding: 18px 22px;
+  background: var(--ui-card-soft);
+  border: 1px solid var(--ui-card-border);
+  border-radius: 12px;
+}
+#fleet .boat .boat__size--photo {
+  width: 96px;
+  height: 76px;
+  border-radius: 8px;
+}
+#fleet .boat > div:nth-child(2) {
+  min-width: 0;
+}
+#fleet .boat h3 {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+#fleet .boat__meta {
+  gap: 8px 16px;
+  line-height: 1.5;
+}
+#fleet .boat__right {
+  grid-column: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+#fleet .boat__price {
+  white-space: nowrap;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+#fleet .boat__right .btn {
+  flex: none;
+  min-height: 46px;
+  margin: 0;
+  padding: 9px 18px;
+  border: 1px solid var(--ui-card-border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+}
+
+/* FAQ: separate contact details from their section while keeping the split. */
+#faq .split > * {
+  min-width: 0;
+}
+#faq .help.contact-card {
+  padding: 26px;
+  border: 1px solid var(--ui-card-border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
+}
+#faq .contact-card > h3 {
+  margin-bottom: 16px;
+}
+#faq .contact-card__list > li {
+  gap: 12px;
+  padding-block: 17px;
+}
+#faq .contact-card__icon {
+  background: #eaf5f2;
+}
+#faq .qa details {
+  border-color: var(--ui-card-border);
+}
+#faq .qa summary {
+  min-height: 64px;
+  padding-block: 20px;
+  line-height: 1.45;
+}
+#faq .qa details p {
+  line-height: 1.7;
+}
+
+/* Header: keep the original identity centered, but inside the bar visually. */
+.nav .wrap.nav__in,
+.nav.solid .wrap.nav__in {
+  min-height: 80px;
+  column-gap: 12px;
+}
+.nav .nav__brand {
+  width: 148px;
+  height: 78px;
+  min-width: 0;
+  overflow: visible;
+}
+.nav .nav__brand img {
+  display: block;
+  width: 148px;
+  height: 78px;
+  max-width: 100%;
+  object-fit: contain;
+  filter: none;
+}
+.nav {
+  border: 1px solid #b8c9c8;
+  border-radius: 12px;
+}
+.nav .nav__toggle,
+.nav .nav__book {
+  min-height: 44px;
+}
+
+/* Tablet: prevent long boat names from colliding with prices and CTAs. */
+@media (min-width: 600px) and (max-width: 899px) {
+  #fleet .boat {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+  #fleet .boat__right {
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--ui-card-border);
+  }
+}
+
+/* Large text must be able to reflow without clipping action controls. */
+.large-text #fleet .boat {
+  grid-template-columns: 72px minmax(0, 1fr);
+}
+.large-text #fleet .boat__right {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--ui-card-border);
+}
+.large-text #fleet .boat__right .btn {
+  flex: 1 1 160px;
+}
+
+/* Mobile: padded compact cards with consistent icon/text alignment. */
+@media (max-width: 599px) {
+  .feats,
+  .steps {
+    gap: 12px;
+  }
+  .feats > *,
+  .steps > * {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 14px;
+    row-gap: 5px;
+    min-height: 0;
+    padding: 18px 16px;
+    align-items: start;
+  }
+  .feats .ic,
+  .steps .ic {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin: 0;
+  }
+  .feats h3,
+  .steps h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  .feats p,
+  .steps p {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.94rem;
+  }
+  #fleet .boats {
+    gap: 12px;
+  }
+  #fleet .boat {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px 14px;
+    min-height: 0;
+    padding: 18px 16px;
+  }
+  #fleet .boat .boat__size--photo {
+    width: 72px;
+    height: 64px;
+  }
+  #fleet .boat h3 {
+    font-size: 1.08rem;
+  }
+  #fleet .boat__right {
+    grid-column: 1 / -1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ui-card-border);
+  }
+  #fleet .boat__right .btn {
+    min-height: 46px;
+    padding-inline: 14px;
+  }
+  #faq .help.contact-card {
+    padding: 20px;
+  }
+  #faq .qa summary {
+    min-height: 60px;
+    padding-block: 18px;
+  }
+  .nav .wrap.nav__in,
+  .nav.solid .wrap.nav__in {
+    min-height: 68px;
+    padding-inline: 10px;
+    gap: 8px;
+  }
+  .nav .nav__brand {
+    width: 120px;
+    height: 66px;
+  }
+  .nav .nav__brand img {
+    width: 120px;
+    height: 66px;
+  }
+}
+@media (max-width: 359px) {
+  .feats > *,
+  .steps > * {
+    padding: 16px 12px;
+    column-gap: 12px;
+  }
+  #fleet .boat {
+    padding: 16px 12px;
+  }
+  #fleet .boat__right {
+    align-items: stretch;
+  }
+  #fleet .boat__right .btn {
+    width: 100%;
+  }
+  .nav .nav__brand,
+  .nav .nav__brand img {
+    width: 108px;
+    height: 62px;
+  }
+}
