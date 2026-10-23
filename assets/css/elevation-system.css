@@ -1,10 +1,13 @@
-/* Consistent, restrained elevation system for Minns Water Sports. */
+/* Flat card surfaces by default; subtle hover feedback for pointer devices. */
 :root {
   --surface-stroke: #dceae7;
   --surface-shadow-soft: 0 2px 8px rgba(11,30,39,.045);
-  --surface-shadow-card: 0 6px 20px rgba(11,30,39,.075);
+  --surface-shadow-card: none;
+  --surface-shadow-hover: 0 5px 18px rgba(11,30,39,.075);
   --surface-shadow-float: 0 12px 32px rgba(11,30,39,.12);
 }
+
+/* Color and borders establish separation without persistent raised cards. */
 .boat,
 .customer-review-card,
 .customer-reviews__placeholder,
@@ -14,16 +17,20 @@
 .contact-card,
 .wizard-review {
   border: 1px solid var(--surface-stroke);
-  box-shadow: var(--surface-shadow-card);
+  box-shadow: none;
 }
+
+/* Keep controls and gallery tiles equally restrained. */
 .review-platforms__link,
 .gallery-tile,
-.form,
 .seg {
-  box-shadow: var(--surface-shadow-soft);
+  box-shadow: none;
 }
+
+/* The form sits above photography, so a tiny elevation supports contrast. */
 .form {
   border: 1px solid var(--surface-stroke);
+  box-shadow: var(--surface-shadow-soft);
 }
 .nav,
 .nav__in {
@@ -34,11 +41,34 @@
 .gallery-dialog {
   box-shadow: var(--surface-shadow-float);
 }
-@media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .boat,.customer-review-card,.review-platforms__link,.gallery-tile {
-    transition: box-shadow .22s ease, transform .22s ease;
+
+/* Hover is a desktop enhancement, never a required mobile interaction. */
+@media (hover: hover) and (pointer: fine) {
+  .feats > *,
+  .steps > *,
+  .boat,
+  .customer-review-card,
+  .review-platforms__link,
+  .gallery-tile {
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
-  .boat:hover,.customer-review-card:hover,.gallery-tile:hover {
-    box-shadow: 0 9px 26px rgba(11,30,39,.11);
+  .feats > *:hover,
+  .steps > *:hover,
+  .boat:hover,
+  .customer-review-card:hover,
+  .review-platforms__link:hover,
+  .gallery-tile:hover {
+    border-color: #c0d9d3;
+    box-shadow: var(--surface-shadow-hover);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feats > *,
+  .steps > *,
+  .boat,
+  .customer-review-card,
+  .review-platforms__link,
+  .gallery-tile {
+    transition: none;
   }
 }
