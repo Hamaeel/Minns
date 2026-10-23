@@ -1,26 +1,23 @@
-/* Sticky header backdrop: opaque white at the top, fading to clear below.
-   Attached to the sticky header, not to the navigation card itself. */
+/* Compact sticky header: white at the top, smoothly transparent below.
+   Do not paint a large opaque panel over the next section. */
 .nav::before{
  content:"";
  position:absolute;
  pointer-events:none;
  z-index:-1;
  left:50%;
- top:-40px;
+ top:-16px;
  transform:translateX(-50%);
  width:100vw;
- height:190px;
+ height:126px;
  background:linear-gradient(to bottom,
    rgba(255,255,255,1) 0%,
-   rgba(255,255,255,1) 28%,
-   rgba(255,255,255,.94) 48%,
-   rgba(255,255,255,.62) 70%,
+   rgba(255,255,255,.96) 30%,
+   rgba(255,255,255,.66) 65%,
    rgba(255,255,255,0) 100%);
 }
-.nav{
- border:1px solid rgba(11,30,39,.24);
- box-shadow:none;
-}
+.nav{border:1px solid rgba(11,30,39,.25);box-shadow:none}
 @media(max-width:599px){
- .nav::before{top:-42px;height:175px}
+ .nav{top:12px;margin-top:12px}
+ .nav::before{top:-14px;height:112px}
 }
