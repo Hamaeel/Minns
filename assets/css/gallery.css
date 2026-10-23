@@ -18,9 +18,10 @@
 .gallery-tile--featured .gallery-caption b{font-size:1.125rem}
 .gallery-tile:focus-visible{outline:3px solid var(--aqua);outline-offset:4px}
 #gallery+#guides{padding-top:var(--head)}
+/* Six equal-weight tiles: desktop is three cards across, two rows. */
 @media(min-width:900px){
- .gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
- .gallery-tile--featured{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+ .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+ .gallery-tile--featured{grid-column:auto;grid-row:auto;aspect-ratio:4/3}
  .gallery-caption{bottom:18px;left:18px;right:18px}
 }
 .large-text .gallery-grid{grid-template-columns:minmax(0,1fr)}

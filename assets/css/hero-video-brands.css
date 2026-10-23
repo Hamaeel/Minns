@@ -50,24 +50,19 @@
   object-fit:contain;
 }
 .review-platforms__inner>.review-platforms__facts{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:4px 16px;
-  max-width:100%;
-  margin:0;
-  color:#61777a;
-  font-size:.78rem;
-  font-weight:400;
+  display:block;
+  width:100%;
+  max-width:920px;
+  margin:0 auto;
+  color:#3d6666;
+  font-size:.9rem;
+  font-weight:600;
   letter-spacing:normal;
   text-transform:none;
   white-space:normal;
   line-height:1.6;
   text-align:center;
 }
-.review-platforms__facts span{white-space:normal}
-.review-platforms__facts strong{font-weight:700;color:#31595c}
 @media(min-width:700px){
   .review-platforms__links{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
@@ -76,7 +71,7 @@
   .review-platforms__links{gap:8px}
   .review-platforms__link{min-height:58px;gap:6px;padding:9px 7px;font-size:.79rem}
   .review-platforms__logo{flex-basis:25px;width:25px;height:25px}
-  .review-platforms__inner>.review-platforms__facts{max-width:320px;gap:2px 12px;font-size:.76rem}
+  .review-platforms__inner>.review-platforms__facts{max-width:100%;font-size:.84rem;line-height:1.55}
 }
 @media(max-width:359px){
   .review-platforms__link{font-size:.74rem;padding-inline:5px}
