@@ -1,0 +1,28 @@
+/* Clearly separate page sections without heavy borders or shadows. */
+.hero{background:#eaf5f2}
+.review-platforms{background:#fff}
+@media(max-width:599px){
+ .hero{background:#eaf5f2;padding-bottom:52px}
+ .review-platforms{background:#fff;border-top:1px solid #dceae7;border-bottom:1px solid #dceae7}
+ .review-platforms__inner{padding-block:22px}
+ main>.sec{position:relative}
+ main>.sec:not(.sec--white){background:#f6f4ef}
+ main>.sec.sec--white{background:#fff}
+ /* Distinct backgrounds for neighboring sections that were both white. */
+ #gallery{background:#fff}
+ #guides{background:#eef6f4}
+ #reviews{background:#eef6f4}
+ #harbour{background:#fff}
+ #fleet{background:#f6f4ef}
+ #how{background:#f6f4ef}
+ #faq{background:#f6f4ef}
+ #reserve{background:#e6f5f3}
+ #gallery+#guides{border-top:1px solid #dceae7}
+ .sec{padding-block:56px}
+ .sec .head{margin-bottom:28px}
+ .hero__media{min-width:0}
+}
+@media(min-width:600px){
+ #guides{background:#f0f7f5}
+ #reviews{background:#eef6f4}
+}
