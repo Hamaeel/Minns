@@ -49,6 +49,7 @@
 <link rel="stylesheet" href="assets/css/nav-dropdown.css">
 <link rel="stylesheet" href="assets/css/mobile-footer-fade.css">
 <link rel="stylesheet" href="assets/css/boat-dialog.css">
+<link rel="stylesheet" href="assets/css/hero-video-brands.css">
 <script>document.documentElement.classList.add("js")</script>
 
 <script type="application/ld+json">
@@ -202,6 +203,13 @@
     </div>
     <div class="hero__media">
       <img class="hero__img" src="assets/images/mws-george-town.jpg" alt="Minns Water Sports boat rental office in George Town, Exuma" width="1600" height="1002" fetchpriority="high">
+      <button class="hero-video-launch" id="heroVideoLaunch" type="button" aria-controls="heroVideoNotice" aria-expanded="false" aria-label="Video preview, coming soon">
+        <span class="hero-video-launch__circle" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 6 9 6-9 6V6Z" fill="currentColor"/></svg>
+        </span>
+        <span class="hero-video-launch__label">Video coming soon</span>
+      </button>
+      <p class="hero-video-notice" id="heroVideoNotice" role="status" aria-live="polite" hidden>Our Exuma video is coming soon. There is no video available to play yet.</p>
     </div>
   </div>
 </section>
@@ -210,11 +218,12 @@
   <div class="wrap review-platforms__inner">
     <p>Find us on</p>
     <div class="review-platforms__links">
-      <a href="#" aria-label="Google Maps profile link coming soon" title="Profile link coming soon" class="review-platforms__link"><span class="platform-mark platform-mark--google" aria-hidden="true">G</span><span>Google Maps</span></a>
-      <a href="#" aria-label="Yelp profile link coming soon" title="Profile link coming soon" class="review-platforms__link"><span class="platform-mark platform-mark--yelp" aria-hidden="true">✱</span><span>Yelp</span></a>
-      <a href="#" aria-label="Trustpilot profile link coming soon" title="Profile link coming soon" class="review-platforms__link"><span class="platform-mark platform-mark--trust" aria-hidden="true">★</span><span>Trustpilot</span></a>
-      <a href="#" aria-label="Tripadvisor profile link coming soon" title="Profile link coming soon" class="review-platforms__link"><span class="platform-mark platform-mark--trip" aria-hidden="true">●●</span><span>Tripadvisor</span></a>
+      <a href="#" class="review-platforms__link" data-profile-pending aria-label="Google Maps profile link coming soon" title="Google Maps profile coming soon"><img class="review-platforms__logo" src="assets/images/brands/google-maps.svg" alt="" width="30" height="30" loading="lazy" decoding="async"><span>Google Maps</span></a>
+      <a href="#" class="review-platforms__link" data-profile-pending aria-label="Yelp profile link coming soon" title="Yelp profile coming soon"><img class="review-platforms__logo" src="assets/images/brands/yelp.svg" alt="" width="30" height="30" loading="lazy" decoding="async"><span>Yelp</span></a>
+      <a href="#" class="review-platforms__link" data-profile-pending aria-label="Trustpilot profile link coming soon" title="Trustpilot profile coming soon"><img class="review-platforms__logo" src="assets/images/brands/trustpilot.svg" alt="" width="30" height="30" loading="lazy" decoding="async"><span>Trustpilot</span></a>
+      <a href="#" class="review-platforms__link" data-profile-pending aria-label="Tripadvisor profile link coming soon" title="Tripadvisor profile coming soon"><img class="review-platforms__logo" src="assets/images/brands/tripadvisor.svg" alt="" width="30" height="30" loading="lazy" decoding="async"><span>Tripadvisor</span></a>
     </div>
+    <p class="review-platforms__status" id="reviewPlatformStatus" role="status" aria-live="polite">Profile links coming soon.</p>
   </div>
 </section>
 
@@ -643,5 +652,6 @@
 <script src="assets/js/booking-wizard.js" defer></script>
 <script src="assets/js/gallery.js" defer></script>
 <script src="assets/js/boat-dialog.js" defer></script>
+<script src="assets/js/hero-video.js" defer></script>
 </body>
 </html>
