@@ -31,14 +31,10 @@
     popup.hidden = true;
     if (intervalId !== null) window.clearInterval(intervalId);
     intervalId = null;
-    try { window.sessionStorage.setItem("minns-offer-demo-dismissed", "1"); } catch { /* Storage may be blocked. */ }
   };
 
-  /** Display the clearly labeled preview once per browser session. */
+  /** Display the clearly labeled preview once per page load, after five seconds. */
   const show = () => {
-    try {
-      if (window.sessionStorage.getItem("minns-offer-demo-dismissed") === "1") return;
-    } catch { /* Continue without storage. */ }
     popup.hidden = false;
     endsAt = Date.now() + durationMs;
     tick();
