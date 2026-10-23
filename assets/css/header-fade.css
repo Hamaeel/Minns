@@ -1,17 +1,28 @@
-/* Soft backdrop follows the sticky header and obscures passing section text.
-   Transparent at both ends; brightest behind the navigation controls. */
+/* Dark-to-light header backdrop: solid near the top, fading below the nav.
+   The header retains its own visible stroke to avoid merging into the fade. */
 .nav::before{
  content:"";
  position:absolute;
  z-index:-1;
  pointer-events:none;
  left:50%;
- top:-74px;
+ top:-90px;
  transform:translateX(-50%);
  width:100vw;
- height:224px;
- background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,.82) 25%,rgba(255,255,255,.98) 48%,rgba(255,255,255,.88) 66%,rgba(255,255,255,0) 100%);
+ height:245px;
+ background:linear-gradient(to bottom,
+   rgba(11,30,39,.96) 0%,
+   rgba(11,30,39,.88) 20%,
+   rgba(11,30,39,.45) 39%,
+   rgba(255,255,255,.96) 58%,
+   rgba(255,255,255,.90) 76%,
+   rgba(255,255,255,0) 100%);
+}
+.nav{
+ border:1px solid rgba(11,30,39,.25);
+ box-shadow:0 1px 0 rgba(255,255,255,.75) inset,0 5px 18px rgba(11,30,39,.08);
 }
 @media(max-width:599px){
- .nav::before{top:-62px;height:190px}
+ .nav::before{top:-85px;height:215px}
+ .nav{border-color:rgba(11,30,39,.28)}
 }
