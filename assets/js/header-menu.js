@@ -7,12 +7,13 @@
 
   const header = document.getElementById("nav");
   const menu = document.getElementById("siteMenu");
+  const backdrop = document.getElementById("menuBackdrop");
   const reserve = document.getElementById("reserve");
   const bar = document.getElementById("mbar");
   const fade = document.getElementById("mbarFade");
   const trigger = header?.querySelector(".nav__toggle");
 
-  if (!header || !menu || !trigger) {
+  if (!header || !menu || !trigger || !backdrop) {
     return;
   }
 
@@ -48,6 +49,14 @@
     fade?.classList.toggle("show", shouldShow);
   }
 
+  // Remove page content from keyboard navigation while the menu is expanded.
+  const backgroundRegions = [
+    document.querySelector("main"),
+    document.querySelector(".foot"),
+    document.querySelector(".announcement"),
+    bar
+  ].filter((element) => element instanceof HTMLElement);
+
   /**
    * Update dropdown visibility and accessible state.
    * @param {boolean} open - Whether the menu should be expanded.
@@ -56,7 +65,11 @@
    */
   function setMenuOpen(open, returnFocus = false) {
     menu.hidden = !open;
+    backdrop.hidden = !open;
     header.classList.toggle("open", open);
+    backgroundRegions.forEach((element) => {
+      element.inert = open;
+    });
     trigger.setAttribute("aria-expanded", String(open));
     trigger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 
@@ -84,15 +97,16 @@
     });
   });
 
-  // Outside click closes the card without blocking the clicked page control.
+  // The backdrop catches outside taps; background elements cannot be interacted with.
+  // Header controls remain accessible above the backdrop.
   document.addEventListener("pointerdown", (event) => {
     if (menu.hidden || !(event.target instanceof Node)) return;
     if (!menu.contains(event.target) && !trigger.contains(event.target)) {
-      setMenuOpen(false);
+      setMenuOpen(false, event.target === backdrop);
     }
   });
 
-  // Unlike the old modal dialog, the dropdown never traps keyboard focus.
+  // Escape returns keyboard focus to the menu trigger.
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !menu.hidden) {
       event.preventDefault();
