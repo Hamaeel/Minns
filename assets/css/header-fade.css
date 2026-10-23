@@ -12,7 +12,7 @@
  background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,.98) 26%,rgba(255,255,255,.82) 58%,rgba(255,255,255,0) 100%);
 }
 .nav{
- border:1px solid rgba(32,75,82,.28);
+ border:1px solid #B8C9C8;
  box-shadow:0 2px 9px rgba(11,30,39,.035);
 }
 @media(max-width:599px){
