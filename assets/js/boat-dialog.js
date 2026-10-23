@@ -23,6 +23,7 @@
   const engine = document.getElementById("boatModalEngine");
   const price = document.getElementById("boatModalPrice");
   const tier = document.getElementById("boatModalTier");
+  const artworkNote = document.getElementById("boatModalArtworkNote");
   const cards = Array.from(document.querySelectorAll("#fleet .boats > .boat"));
 
   const supported = Boolean(
@@ -30,7 +31,7 @@
     form && window.MinnsBookingWizard && scrollPanel &&
     details && booking && wizardHost && close && back && book &&
     image && title && bookingTitle && size && capacity && engine &&
-    price && tier
+    price && tier && artworkNote
   );
   if (!supported) return;
 
@@ -126,6 +127,7 @@
 
     image.src = thumbnail.getAttribute("src");
     image.alt = thumbnail.alt;
+    artworkNote.hidden = !/illustration/i.test(thumbnail.alt);
     return link.dataset.boat || "";
   }
 
