@@ -1,55 +1,133 @@
-(function () {
-  'use strict';
-  var header = document.getElementById('nav'), menu = document.getElementById('siteMenu');
-  var trigger = header.querySelector('.nav__toggle'), close = menu.querySelector('.menu-close');
-  var previousOverflow = '', returnFocus = true;
+/**
+ * Minns header controls: compact, non-modal menu dropdown and mobile action bar.
+ * The dropdown leaves the page scrollable and is anchored to the sticky header.
+ */
+(() => {
+  "use strict";
+
+  const header = document.getElementById("nav");
+  const menu = document.getElementById("siteMenu");
+  const reserve = document.getElementById("reserve");
+  const bar = document.getElementById("mbar");
+  const trigger = header?.querySelector(".nav__toggle");
+  const closeButton = menu?.querySelector(".nav-dropdown__close");
+
+  if (!header || !menu || !trigger || !closeButton) {
+    return;
+  }
+
+  /**
+   * Keep anchor scrolling aligned to the measured sticky header.
+   * Also respect browser text zoom / font size adjustments.
+   * @returns {void}
+   */
   function syncHeader() {
-    document.documentElement.classList.toggle('large-text',parseFloat(getComputedStyle(document.documentElement).fontSize)>20);
-    document.documentElement.style.setProperty('--site-header-height',header.getBoundingClientRect().height+'px');
+    const rootSize = Number.parseFloat(
+      window.getComputedStyle(document.documentElement).fontSize
+    );
+    document.documentElement.classList.toggle(
+      "large-text",
+      Number.isFinite(rootSize) && rootSize > 20
+    );
+    document.documentElement.style.setProperty(
+      "--site-header-height",
+      `${Math.ceil(header.getBoundingClientRect().height)}px`
+    );
   }
+
+  /**
+   * Hide the mobile booking shortcut while the booking form is visible.
+   * @returns {void}
+   */
   function updateActionBar() {
-    var bar = document.getElementById('mbar'), reserve = document.getElementById('reserve').getBoundingClientRect();
-    if (bar) bar.classList.toggle('show',window.scrollY>500 && !(reserve.top<window.innerHeight && reserve.bottom>0));
+    if (!bar || !reserve) return;
+    const bounds = reserve.getBoundingClientRect();
+    const reserveVisible = bounds.top < window.innerHeight && bounds.bottom > 0;
+    bar.classList.toggle(
+      "show",
+      window.scrollY > 500 && !reserveVisible
+    );
   }
-  syncHeader(); updateActionBar();
-  window.addEventListener('resize',function () { syncHeader(); updateActionBar(); });
-  window.addEventListener('scroll',updateActionBar,{passive:true});
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeader);
-  if ('ResizeObserver' in window) {
-    var probe = document.createElement('span');
-    probe.setAttribute('aria-hidden','true');
-    probe.style.cssText = 'position:absolute;left:0;top:0;width:1rem;height:1rem;visibility:hidden;pointer-events:none';
-    document.body.appendChild(probe);
-    var observer = new ResizeObserver(syncHeader); observer.observe(header); observer.observe(probe);
+
+  /**
+   * Update dropdown visibility and accessible state.
+   * @param {boolean} open - Whether the menu should be expanded.
+   * @param {boolean} [returnFocus=false] - Focus the menu trigger after closing.
+   * @returns {void}
+   */
+  function setMenuOpen(open, returnFocus = false) {
+    menu.hidden = !open;
+    header.classList.toggle("open", open);
+    trigger.setAttribute("aria-expanded", String(open));
+    trigger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+
+    if (!open && returnFocus) {
+      trigger.focus({ preventScroll: true });
+    }
   }
-  if (!menu.showModal) return;
+
   trigger.disabled = false;
-  trigger.addEventListener('click',function () {
-    returnFocus = true;
-    previousOverflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = 'hidden';
-    menu.style.setProperty('--menu-header-top',header.getBoundingClientRect().top+'px');
-    header.classList.add('open');
-    trigger.setAttribute('aria-expanded','true');
-    trigger.setAttribute('aria-label','Close menu');
-    menu.showModal(); close.focus();
+  setMenuOpen(false);
+  syncHeader();
+  updateActionBar();
+
+  trigger.addEventListener("click", () => {
+    const shouldOpen = menu.hidden;
+    setMenuOpen(shouldOpen);
+    if (shouldOpen) {
+      menu.querySelector("a")?.focus({ preventScroll: true });
+    }
   });
-  close.addEventListener('click',function () { menu.close(); });
-  menu.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click',function () { returnFocus = false; menu.close(); });
+
+  closeButton.addEventListener("click", () => {
+    setMenuOpen(false, true);
   });
-  menu.addEventListener('keydown',function (e) {
-    if (e.key !== 'Tab') return;
-    var items = menu.querySelectorAll('button:not([disabled]),a[href]');
-    var first = items[0], last = items[items.length-1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+
+  menu.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenuOpen(false);
+    });
   });
-  menu.addEventListener('close',function () {
-    header.classList.remove('open');
-    trigger.setAttribute('aria-expanded','false');
-    trigger.setAttribute('aria-label','Open menu');
-    document.documentElement.style.overflow = previousOverflow;
-    if (returnFocus) trigger.focus({preventScroll:true});
+
+  // Outside click closes the card without blocking the clicked page control.
+  document.addEventListener("pointerdown", (event) => {
+    if (menu.hidden || !(event.target instanceof Node)) return;
+    if (!menu.contains(event.target) && !trigger.contains(event.target)) {
+      setMenuOpen(false);
+    }
   });
-}());
+
+  // Unlike the old modal dialog, the dropdown never traps keyboard focus.
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !menu.hidden) {
+      event.preventDefault();
+      setMenuOpen(false, true);
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    syncHeader();
+    updateActionBar();
+  });
+
+  window.addEventListener("scroll", updateActionBar, { passive: true });
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(syncHeader).catch(() => {
+      // Font loading failure should not prevent navigation.
+    });
+  }
+
+  if ("ResizeObserver" in window) {
+    const probe = document.createElement("span");
+    probe.setAttribute("aria-hidden", "true");
+    probe.style.cssText =
+      "position:absolute;left:0;top:0;width:1rem;height:1rem;" +
+      "visibility:hidden;pointer-events:none";
+    document.body.appendChild(probe);
+
+    const observer = new ResizeObserver(syncHeader);
+    observer.observe(header);
+    observer.observe(probe);
+  }
+})();
