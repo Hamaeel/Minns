@@ -1,0 +1,63 @@
+/* One shared spacing scale, content edge and responsive reflow layer. */
+:root{--sec:56px;--head:28px;--gap:24px;--split-gap:32px}
+@media(min-width:600px){:root{--sec:72px;--head:32px;--gap:24px;--split-gap:40px}}
+@media(min-width:1200px){:root{--sec:88px;--head:40px;--gap:32px;--split-gap:48px}}
+.split>*,.hero__grid>*,.cards>*,.form__grid>*{min-width:0}
+h1,h2,h3,p,.contact strong{overflow-wrap:anywhere}
+.hero__grid{gap:var(--split-gap)}
+.hero+section[aria-labelledby="why-h"]{padding-top:var(--head)}
+.hero__ctas{flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero__ctas .btn{min-width:0;max-width:100%;white-space:normal;line-height:1.4}
+.hero__list{gap:12px}
+.tag{max-width:100%}
+.reserve__in .contact{margin-top:0}
+.policy-line{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.form{overflow-wrap:anywhere}
+.form input,.form select,.form textarea{min-width:0;max-width:100%;font-size:1rem}
+.form .btn{white-space:normal;line-height:1.4}
+.form .full{grid-column:1/-1}
+.logo{min-height:44px}
+.logo>span{min-width:0}
+.contact a,.gtable a,.foot ul a,.help a,.zone-note a,.fine a,.ratebox__note a,.form__fine a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}
+.help a{display:flex}
+.contact a,.contact strong{min-width:0;overflow-wrap:anywhere}
+.gtable{table-layout:fixed}
+.gtable td{overflow-wrap:anywhere}
+.gtable td.ph{white-space:normal}
+.foot ul{gap:0}
+.qa summary::after{right:7px}
+.nav__links a{min-height:44px;display:flex;align-items:center}
+.nav.compact .nav__links{display:none;position:absolute;top:calc(100% + 8px);left:var(--gutter);right:var(--gutter);flex-direction:column;align-items:stretch;gap:4px;padding:12px;background:#fff;color:var(--ink);border-radius:12px;box-shadow:0 20px 50px -20px rgba(11,30,39,.4);max-height:calc(100dvh - var(--site-header-height,113px) - 16px);overflow-y:auto}
+.nav.compact.open .nav__links{display:flex}
+.nav.compact .nav__toggle{display:grid}
+.nav.compact .nav__tel{display:none}
+.mbar{bottom:max(12px,env(safe-area-inset-bottom))}
+.mbar .btn{min-width:0;min-height:48px;padding:10px 12px;font-size:.875rem;line-height:1.4;white-space:normal;text-align:center}
+.mbar .btn:first-child{flex:0 0 88px}
+.mbar .btn:last-child{flex:1}
+@media(min-width:900px){.faq__side{top:calc(var(--site-header-height,113px) + 24px)}.nav .logo b{white-space:nowrap}}
+@media(max-width:599px){
+ .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;overflow:visible}
+ .tabs button{min-width:0;min-height:48px;white-space:normal;line-height:1.5;text-align:left}
+ .seg button{min-width:0;padding-inline:12px}
+ .contact li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:2px 12px}
+ .contact .ic{grid-row:1/3}
+ .contact a,.contact strong{grid-column:2;justify-self:start;margin-left:0;text-align:left}
+ .nav .logo b{white-space:normal}
+}
+/* Text resizing reflows controls instead of cropping their content. */
+.large-text .seg{flex-wrap:wrap;border-radius:16px}
+.large-text .seg button{flex:1 1 180px;white-space:normal;line-height:1.5;padding-block:8px}
+.large-text .boat{grid-template-columns:72px minmax(0,1fr)}
+.large-text .boat__right{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;justify-content:space-between;max-width:100%}
+.large-text .boat__right .btn{white-space:normal;max-width:100%;line-height:1.4}
+.large-text .form__grid{grid-template-columns:minmax(0,1fr)}
+.large-text .tabs{display:grid;grid-template-columns:minmax(0,1fr);gap:0;overflow:visible}
+.large-text .tabs button{white-space:normal;line-height:1.5;text-align:left}
+.large-text .mbar{display:none}
+.large-text .rates,.large-text .rates tbody,.large-text .rates tr,.large-text .rates th,.large-text .rates td{display:block;min-width:0}
+.large-text .rates tr{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding-block:16px}
+.large-text .rates thead{display:none}
+.large-text .rates th[scope=row]{grid-column:1/-1}
+.large-text .rates td::before{content:attr(data-label);display:block;font-size:.875rem;font-weight:400;color:var(--muted)}
+@media(max-height:500px) and (orientation:landscape){.mbar{display:none}}

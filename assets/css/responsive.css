@@ -1,0 +1,66 @@
+/* Verified responsive repairs: reflow, measured header clearance and touch areas. */
+section[aria-labelledby="why-h"] .head,#guides .head{justify-content:center;align-items:center;text-align:center}
+section[aria-labelledby="why-h"] .head>div,#guides .head>div{width:100%}
+section[aria-labelledby="why-h"] .head .lead,#guides .head .lead{margin-inline:auto}
+.nav{top:var(--announcement-height,44px)}
+#top.hero{padding-top:calc(var(--header-stack-height,var(--header-bottom)) + var(--gutter))}
+.announcement__in{gap:8px}
+.announcement__social{flex-shrink:0}
+.announcement__hours{white-space:normal;line-height:1.4;text-align:right}
+.nav .logo b{white-space:nowrap}
+.nav .logo>span{min-width:0}
+.logo{min-height:44px}
+.nav .wrap.nav__in{min-height:69px}
+.nav.compact .nav__links{display:none;position:absolute;top:calc(100% + 8px);left:var(--gutter);right:var(--gutter);flex-direction:column;align-items:stretch;gap:4px;padding:12px;background:#fff;color:var(--ink);border-radius:12px;box-shadow:0 20px 50px -20px rgba(11,30,39,.4);max-height:calc(100dvh - var(--header-stack-height,113px) - 16px);overflow-y:auto;overscroll-behavior:contain}
+.nav.compact.open .nav__links{display:flex}
+.nav.compact .nav__links a{white-space:normal}
+.enhanced .nav.compact .nav__toggle{display:grid}
+.nav.compact .nav__tel{display:none}
+.reserve__in>*{min-width:0}
+.form input,.form select,.form textarea,#quick input,#quick select{min-width:0;max-width:100%}
+.contact a,.gtable a,.foot ul a,.help a,.zone-note a,.fine a,.ratebox__note a,.form-fallback a,.form__fine a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere}
+.contact strong,.contact a{min-width:0;overflow-wrap:anywhere}
+.help a{display:flex}
+.gtable{table-layout:fixed}
+.gtable td{overflow-wrap:anywhere}
+.gtable td.ph{white-space:normal}
+.boat h3{overflow-wrap:anywhere}
+.form{overflow-wrap:anywhere}
+.qa summary::after{right:7px}
+.foot ul{gap:0}
+.mbar{bottom:max(12px,env(safe-area-inset-bottom))}
+.mbar .btn{min-width:0;min-height:48px;padding:10px 12px;font-size:.875rem;line-height:1.4;white-space:normal;text-align:center}
+.mbar .btn:first-child{flex:0 0 88px}
+.mbar .btn:last-child{flex:1}
+@media(min-width:900px){.faq__side{top:calc(var(--header-stack-height,113px) + 24px)}}
+@media(max-width:1023px){
+  .nav .logo b{white-space:normal}
+  .nav__links{max-height:calc(100dvh - var(--header-stack-height,113px) - 16px);overflow-y:auto;overscroll-behavior:contain}
+}
+.large-text .seg{flex-wrap:wrap;border-radius:16px}
+.large-text .seg button{flex:1 1 180px;white-space:normal;line-height:1.5;padding-block:8px}
+.large-text .boat{grid-template-columns:72px minmax(0,1fr)}
+.large-text .boat__right{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;justify-content:space-between;max-width:100%}
+.large-text .boat__right .btn{white-space:normal;max-width:100%}
+.large-text .book__fields,.large-text .form__grid,.large-text .form-progress{grid-template-columns:minmax(0,1fr)}
+.large-text #quick.book{grid-template-columns:minmax(0,1fr)}
+.large-text .book__summary{border-left:0;border-top:1px solid #d6e7df}
+.large-text .enhanced .tabs,.large-text.enhanced .tabs{display:grid;grid-template-columns:minmax(0,1fr);gap:0;overflow:visible}
+.large-text .tabs button{white-space:normal;line-height:1.5;text-align:left}
+.large-text .hero__ctas .btn{white-space:normal;line-height:1.4;min-height:56px;max-width:100%}
+.large-text .mbar{display:none}
+@media(max-width:599px){
+  .nav .wrap.nav__in{min-height:65px}
+  .enhanced .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;overflow:visible}
+  .tabs button{min-width:0;min-height:48px;white-space:normal;line-height:1.5;text-align:left}
+  .seg button{min-height:44px}
+  .contact li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:2px 12px}
+  .contact .ic{grid-row:1/3}
+  .contact a,.contact strong{grid-column:2;justify-self:start;margin-left:0;text-align:left}
+  .contact small{min-width:0}
+}
+@media(max-height:500px) and (orientation:landscape){
+  .hero-slider{min-height:420px;padding-block:64px 88px}
+  .hero-slider .hero__image-credit{bottom:20px}
+  .mbar{display:none}
+}

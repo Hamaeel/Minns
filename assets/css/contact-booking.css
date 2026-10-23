@@ -1,0 +1,29 @@
+/* Keep contact details in FAQ; give the booking wizard a centered canvas. */
+#reserve{background-color:#0b303a;background-image:linear-gradient(115deg,rgba(5,31,40,.88),rgba(7,62,66,.77)),url('../images/generated-bahamas-hero.webp');background-position:center;background-size:cover;background-repeat:no-repeat}
+#reserve>.wrap>.head h2{color:#fff}
+#reserve>.wrap>.head h2 .it{color:var(--mint)}
+#reserve>.wrap>.head .lead{color:#e3f0ee}
+#reserve>.wrap>.head .tag{color:#fff;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.08)}
+#reserve .reserve__in{display:block;width:100%;max-width:720px;margin-inline:auto}
+#reserve .booking-wizard{width:100%;margin:0;background:#fff;border-color:rgba(255,255,255,.4);box-shadow:0 16px 48px -24px rgba(0,0,0,.4)}
+.contact-card{padding:24px}
+.contact-card>h3{font-size:1.125rem;line-height:1.4;margin:0 0 20px}
+.contact-card__list{list-style:none;margin:0;padding:0}
+.contact-card__list>li{display:grid;grid-template-columns:36px minmax(0,1fr);align-items:start;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.contact-card__list>li:first-child{padding-top:0}
+.contact-card__list>li:last-child{padding-bottom:0;border-bottom:0}
+.contact-card__icon{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#fff;color:var(--aqua)}
+.contact-card__icon svg{width:18px;height:18px}
+.contact-card__copy{min-width:0}
+.contact-card__copy>small{font-size:.8125rem;line-height:1.5;color:var(--muted)}
+.contact-card__copy>a{font-size:1rem;line-height:1.5;font-weight:600;min-height:44px;overflow-wrap:anywhere}
+.contact-card__secondary{display:block;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.contact-card__secondary a{display:inline-flex;min-height:44px;font-size:.875rem;color:var(--ink)}
+.contact-card__value,.contact-card address{display:block;margin-top:6px;font-size:1rem;line-height:1.6;color:var(--ink);font-style:normal;overflow-wrap:anywhere}
+.contact-card address .contact-card__secondary{margin-top:6px}
+.large-text .faq__side{position:static}
+@media(max-height:850px){.faq__side{position:static}}
+@media(max-width:599px){
+ #reserve{background-image:linear-gradient(rgba(5,31,40,.86),rgba(7,49,57,.86)),url('../images/generated-bahamas-hero-900.webp');background-position:65% center}
+ .contact-card{padding:20px}
+}

@@ -1,0 +1,37 @@
+/* Dedicated input area and a separate, legible price/action panel. */
+#top.hero{--header-bottom:113px;padding:calc(var(--header-bottom) + var(--gutter)) 0 0}
+@media(max-width:599px){#top.hero{--header-bottom:109px}}
+@media(min-width:1024px){#top.hero{padding-inline:max(var(--gutter),calc((100% - var(--max))/2))}}
+.nav:not(.solid) .nav__in{background:var(--ink)}
+#top .hero__frame{border-radius:24px 24px 0 0}
+#top .book-wrap{width:100%;max-width:none;margin-top:0;padding-inline:0}
+#quick.book{display:grid;grid-template-columns:minmax(0,1fr);padding:0;gap:0;overflow:hidden;border:1px solid var(--line);border-top:0;border-radius:0 0 16px 16px;background:#fff;box-shadow:none}
+.book__details{padding:24px;min-width:0}
+.book__heading{margin-bottom:20px}
+.book__heading h2{font-size:1.5rem;line-height:1.25;letter-spacing:-.04em;margin:0 0 6px}
+.book__heading p{font-size:.875rem;line-height:1.5;color:var(--muted);margin:0}
+.book__fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#quick .book__fields label{grid-column:auto;min-height:82px;border:1px solid #cbd6d7;border-radius:8px;background:#fff;padding:10px 12px;gap:4px;font-size:.875rem;line-height:1.5;font-weight:500;color:var(--muted)}
+#quick .book__fields label:first-child{grid-column:1/-1}
+#quick .book__fields select,#quick .book__fields input{min-height:44px;padding:2px 0;font-size:1rem;font-weight:500;line-height:1.5}
+#quick .book__fields label:focus-within{border-color:var(--aqua);background:#f5fbf9;box-shadow:0 0 0 1px var(--aqua)}
+.book__reassurance{display:flex;align-items:flex-start;gap:7px;margin:16px 0 0;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.book__reassurance svg{width:16px;height:20px;flex:none;color:var(--aqua)}
+.book__summary{display:flex;flex-direction:column;justify-content:center;gap:16px;padding:24px;background:#edf6f2;border-top:1px solid #d6e7df;min-width:0}
+#quick .book__est{grid-column:auto;border:0;background:transparent;padding:0;margin:0;gap:4px;border-radius:0}
+#quick .book__est small{font-size:.875rem;line-height:1.5;color:#415e58;font-weight:500}
+#quick .book__est b{font-size:2rem;line-height:1.15;color:var(--ink);letter-spacing:-.04em}
+#quick .book__est span{font-size:.875rem;line-height:1.55;color:#415e58}
+#quick .book__summary>.btn{grid-column:auto;width:100%;max-width:none;min-height:50px;padding:12px 16px;margin:0;border-radius:8px;gap:10px;white-space:normal;font-size:.875rem}
+#quick .book__summary>.btn svg{width:18px;height:18px;flex:none}
+@media(min-width:700px){
+  #quick.book{grid-template-columns:minmax(0,1fr) 280px}
+  .book__summary{border-top:0;border-left:1px solid #d6e7df}
+}
+@media(min-width:1100px){
+  #quick.book{grid-template-columns:minmax(0,1fr) 300px}
+  .book__details{padding:26px 28px}
+  .book__fields{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,.85fr)}
+  #quick .book__fields label:first-child{grid-column:auto}
+}
+@media(max-width:399px){.book__details,.book__summary{padding:20px}.book__fields{gap:10px}#quick .book__fields label{padding-inline:8px}}

@@ -1,0 +1,63 @@
+/* Supplied logo centered independently of the left/right controls. */
+.foot__brand{display:inline-flex;align-items:center;max-width:100%;min-height:44px}
+.foot__brand img{display:block;width:210px;height:auto;max-width:100%}
+.announcement{position:static;inset:auto}
+.announcement .wrap.announcement__in{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;width:100%;max-width:none;padding-inline:max(var(--gutter),calc((100% - var(--max))/2))}
+.nav{position:sticky;top:12px;left:auto;right:auto;z-index:60;width:calc(100% - var(--gutter) * 2);max-width:var(--max);margin:12px auto 0;background:rgba(5,25,33,.84);border:1px solid rgba(255,255,255,.2);border-radius:16px;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);pointer-events:auto}
+.nav .wrap.nav__in,.nav.solid .wrap.nav__in,.menu-overlay .wrap.nav__in{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:12px;width:100%;max-width:none;margin:0;padding:6px max(var(--gutter),calc((100% - var(--max))/2));border:0;border-bottom:1px solid rgba(255,255,255,.12);border-radius:0;background:#000;color:#fff;box-shadow:none;backdrop-filter:none}
+.nav .wrap.nav__in,.nav.solid .wrap.nav__in{padding-inline:20px;border:0;border-radius:inherit;background:transparent}
+.nav .nav__brand img{mix-blend-mode:normal;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px rgba(255,255,255,.95)) drop-shadow(0 0 20px rgba(255,255,255,.8))}
+.nav__brand{display:flex;justify-content:center;align-items:center;width:180px;height:120px;justify-self:center;text-decoration:none}
+.nav__brand img{width:180px;height:120px;max-width:100%;object-fit:contain}
+/* Keep the bar compact while the centered artwork extends above and below it. */
+.nav{top:28px;margin-top:28px;overflow:visible}
+.nav .nav__brand{height:64px;overflow:visible}
+/* White page surround and frosted header, with dark readable controls. */
+body{background:#fff}
+.nav{background:rgba(255,255,255,.86);border-color:rgba(11,30,39,.13)}
+.nav .wrap.nav__in,.nav.solid .wrap.nav__in{color:var(--ink)}
+.nav .nav__toggle{color:var(--ink);border-color:rgba(11,30,39,.2)}
+.nav .nav__toggle:hover{background:rgba(10,118,124,.07)}
+.nav :focus-visible{outline-color:var(--aqua)}
+.nav .nav__toggle,.menu-close{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:auto;min-width:44px;height:44px;justify-self:start;padding:10px 14px;border:1px solid rgba(255,255,255,.3);border-radius:8px;background:transparent;color:#fff;font:500 .875rem/1.4 var(--body);cursor:pointer}
+.nav .nav__toggle:hover,.menu-close:hover{background:rgba(255,255,255,.1)}
+.nav .nav__toggle{color:var(--ink);border-color:rgba(11,30,39,.2)}
+.nav .nav__toggle:hover{background:rgba(10,118,124,.07)}
+.nav__toggle svg,.menu-close svg{width:22px;height:22px;flex:none}
+.nav__book{justify-self:end;min-height:44px;padding:12px 18px;font-size:.875rem;line-height:1.4;white-space:normal}
+.nav__book svg{width:18px;height:18px;flex:none}
+.nav :focus-visible,.menu-overlay :focus-visible{outline:2px solid var(--mint);outline-offset:4px}
+.hero{padding-top:var(--s6)}
+.header-fallback{display:flex;flex-wrap:wrap;gap:8px 20px;padding-block:16px}
+.header-fallback a{display:flex;align-items:center;min-height:44px}
+.menu-overlay{position:fixed;inset:0;width:100%;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:rgba(4,24,32,.87);color:#fff;overflow:auto;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);overscroll-behavior:contain}
+.menu-overlay:not([open]){display:none}
+.menu-overlay::backdrop{background:rgba(1,10,15,.4);backdrop-filter:blur(10px)}
+.menu-overlay__inner{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh;min-height:100dvh}
+.menu-overlay__top{position:sticky;top:0;z-index:2}
+.menu-overlay__main{align-self:center;padding-block:28px;max-width:824px}
+.menu-eyebrow{text-align:center;font-size:.75rem;line-height:1.6;text-transform:uppercase;letter-spacing:.14em;color:#bed8d3;margin:0 0 20px}
+.menu-overlay .nav__links{position:static;display:grid;list-style:none;flex-direction:column;gap:0;max-height:none;overflow:visible;margin:0;padding:0;border-radius:0;background:transparent;color:#fff;box-shadow:none}
+.menu-overlay .nav__links a{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;gap:16px;align-items:center;min-height:52px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.16);border-radius:0;color:#fff;font:500 clamp(1.75rem,4.5vh,3.25rem)/1.2 var(--display);letter-spacing:-.035em;text-decoration:none;text-align:center;opacity:1;overflow-wrap:anywhere}
+.menu-overlay .nav__links a:hover{color:var(--mint);background:transparent}
+.menu-index{font:500 .75rem/1 var(--body);color:#bed8d3;letter-spacing:.06em;text-align:left}
+.menu-overlay .nav__links svg{width:22px;height:22px;justify-self:end}
+.menu-overlay__footer{text-align:center;padding-block:12px 24px;color:#bed8d3;font-size:.875rem;line-height:1.6}
+.menu-overlay__footer>div{display:flex;justify-content:center;flex-wrap:wrap;gap:0 24px;margin-top:8px}
+.menu-overlay__footer a{display:inline-flex;align-items:center;min-height:44px;color:#fff;text-decoration:none;overflow-wrap:anywhere}
+.menu-overlay[open] .menu-overlay__main{animation:menu-reveal .3s ease both}
+@keyframes menu-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:599px){
+ .nav .wrap.nav__in,.menu-overlay .wrap.nav__in{gap:8px;padding-block:8px}
+ .nav .wrap.nav__in,.nav.solid .wrap.nav__in{padding-inline:10px}
+ .nav__brand,.nav__brand img{width:114px;height:76px}
+ .nav{top:24px;margin-top:24px}
+ .nav .nav__brand{width:144px;height:48px}
+ .nav .nav__brand img{width:144px;height:96px;max-width:none}
+ .nav .nav__toggle,.menu-close{width:44px;padding:10px}
+ .nav__toggle>span,.menu-close>span,.nav__book>span{display:none}
+ .nav__book{width:44px;padding:10px}
+ .menu-overlay .nav__links a{gap:8px;grid-template-columns:24px minmax(0,1fr) 24px}
+ .menu-overlay__footer>div{gap:0 12px}
+}
+@media(prefers-reduced-motion:reduce){.menu-overlay[open] .menu-overlay__main{animation:none}}

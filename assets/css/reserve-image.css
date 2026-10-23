@@ -1,0 +1,16 @@
+/* Calm water photograph with a teal overlay; the form stays opaque white. */
+#reserve{position:relative;isolation:isolate;background:#0b303a url('../images/generated-bahamas-hero.webp') center center/cover no-repeat}
+#reserve::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(5,31,40,.96),rgba(7,48,55,.88) 45%,rgba(5,31,40,.74))}
+#reserve .reserve__in>div:first-child{color:#fff}
+#reserve h2{color:#fff}
+#reserve h2 .it{color:var(--mint)}
+#reserve .reserve__in>div:first-child>.lead{color:#e0eeed}
+#reserve .tag{color:#fff;border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.09)}
+#reserve .contact li{border-bottom-color:rgba(255,255,255,.2)}
+#reserve .contact small{color:#d6e8e6}
+#reserve .contact a,#reserve .contact strong{color:#fff}
+#reserve .contact .ic{background:rgba(116,224,198,.14);color:var(--mint)}
+#reserve .contact a:focus-visible{outline:2px solid var(--mint);outline-offset:4px}
+#reserve .form{background:#fff;box-shadow:0 20px 60px -24px rgba(0,0,0,.4)}
+@media(max-width:699px){#reserve{background-image:url('../images/generated-bahamas-hero-900.webp');background-position:65% top}#reserve::before{background:rgba(5,31,40,.9)}}
+.fleet-image-note{margin:16px 0 0;color:var(--muted);font-size:.875rem;line-height:1.6}

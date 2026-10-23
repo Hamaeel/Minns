@@ -1,0 +1,76 @@
+(function () {
+  var RATES = { '17': [316, 272, 243, 300], '19': [418, 360, 330, 400], '20': [498, 450, 410, 400], '22': [498, 450, 410, 400], '26': [607, 538, 483, 400] };
+  var tierFor = function (days) { return days >= 7 ? 2 : days >= 3 ? 1 : 0; };
+  var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+  var iso = function (d) { return d.toISOString().slice(0, 10); };
+
+  // Header and full-screen navigation are initialized by header-menu.js.
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  var els = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Fleet: rate length switch
+  var segBtns = document.querySelectorAll('.seg button');
+  segBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      segBtns.forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      var t = +b.dataset.tier;
+      document.querySelectorAll('[data-rates]').forEach(function (el) {
+        el.firstChild.nodeValue = money(+el.dataset.rates.split(',')[t]);
+      });
+    });
+  });
+
+  // Fleet: show the matching real photo when a boat row is hovered
+  var photos = document.querySelectorAll('.fleet__photo img');
+  document.querySelectorAll('.boat').forEach(function (row) {
+    row.addEventListener('mouseenter', function () {
+      document.querySelectorAll('.boat').forEach(function (r) { r.classList.toggle('on', r === row); });
+      var key = row.dataset.photo;
+      if (!key) return;
+      photos.forEach(function (img) { img.classList.toggle('off', img.dataset.key !== key); });
+    });
+  });
+
+  // Booking steps and email draft are initialized by booking-wizard.js.
+
+  // Guides tabs
+  var tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t); });
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.toggle('on', p.id === t.dataset.tab); });
+    });
+  });
+
+  // Gallery rail arrows
+  var rail = document.getElementById('rail');
+  document.querySelectorAll('.rail-ctrl button').forEach(function (b) {
+    b.addEventListener('click', function () { rail.scrollBy({ left: +b.dataset.dir * rail.clientWidth * 0.6, behavior: 'smooth' }); });
+  });
+
+  // Lightbox
+  var lb = document.createElement('div');
+  lb.className = 'lb';
+  lb.setAttribute('role', 'dialog');
+  lb.innerHTML = '<img alt="">';
+  document.body.appendChild(lb);
+  document.querySelectorAll('.rail img, .maps img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('img').alt = img.alt;
+      lb.classList.add('on');
+    });
+  });
+  lb.addEventListener('click', function () { lb.classList.remove('on'); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('on'); });
+})();

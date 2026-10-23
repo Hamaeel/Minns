@@ -1,0 +1,24 @@
+/* Leave room for the sticky bar and the artwork below it on anchor navigation. */
+html{scroll-padding-top:calc(var(--site-header-height,78px) + 64px)}
+.nav__book-short{display:none}
+@media(max-width:599px){
+ .nav .wrap.nav__in,.menu-overlay .wrap.nav__in{gap:8px;padding:8px 10px}
+ .nav .nav__brand,.menu-overlay .nav__brand{width:126px;height:44px}
+ .nav .nav__brand img,.menu-overlay .nav__brand img{width:126px;height:84px;max-width:none}
+ .nav__book .nav__book-label{display:none}
+ .hero__sub{font-size:1.0625rem;line-height:1.6}
+ .hero__ctas{margin-top:24px}
+ .hero__text>.tag{font-size:.75rem;padding:6px 12px}
+ .menu-overlay__top{padding-bottom:12px}
+ .menu-overlay__footer{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+ .menu-overlay .wrap.nav__in{gap:8px}
+}
+@media(min-width:360px) and (max-width:599px){
+ .nav__book{width:auto;padding:10px 12px;gap:6px;font-size:.8125rem}
+ .nav__book .nav__book-short{display:inline}
+ .nav__book svg{width:16px;height:16px}
+}
+@media(max-width:359px){
+ .announcement__hours{font-size:.75rem}
+ .announcement__hours svg{width:16px;height:16px}
+}
