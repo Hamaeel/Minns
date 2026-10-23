@@ -246,29 +246,36 @@
   }
 }
 
-/* Desktop: keep every pixel of the mascot/logo INSIDE the navigation bar.
-   The former absolute 180x120 image overhung a shorter 80px bar. */
+/* Desktop: restore the intentional centered logo overhang.
+   Leave a comfortable gap between the announcement strip and the artwork,
+   while allowing the artwork to cross the header border top and bottom. */
 @media (min-width: 900px) {
+  .nav#nav {
+    top: 24px;
+    margin-top: 28px;
+    overflow: visible;
+  }
   .nav#nav > .nav__in {
     min-height: 94px;
     padding-block: 5px;
+    overflow: visible;
   }
   .nav#nav .nav__brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 142px;
-    height: 82px;
+    position: relative;
+    z-index: 3;
+    display: block;
+    width: 170px;
+    height: 84px;
     overflow: visible;
   }
   .nav#nav .nav__brand img {
-    position: static;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 126px;
-    height: 82px;
-    max-width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 120px;
+    max-width: none;
     object-fit: contain;
   }
 }

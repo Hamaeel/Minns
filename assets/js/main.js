@@ -60,6 +60,30 @@
 
   // Booking steps and email draft are initialized by booking-wizard.js.
 
+  // FAQ: native <details> remain independent, so opening another question
+  // never closes one already open. Offer an explicit open/close all control.
+  var faqGroup = document.getElementById('faqAnswers');
+  var faqToggle = document.getElementById('faqExpandAll');
+  if (faqGroup && faqToggle) {
+    var faqItems = Array.from(faqGroup.querySelectorAll('details'));
+    var syncFaqToggle = function () {
+      var allOpen = faqItems.length > 0 && faqItems.every(function (item) {
+        return item.open;
+      });
+      faqToggle.textContent = allOpen ? 'Collapse all' : 'Expand all';
+      faqToggle.setAttribute('aria-expanded', String(allOpen));
+    };
+    faqToggle.addEventListener('click', function () {
+      var shouldOpen = !faqItems.every(function (item) { return item.open; });
+      faqItems.forEach(function (item) { item.open = shouldOpen; });
+      syncFaqToggle();
+    });
+    faqItems.forEach(function (item) {
+      item.addEventListener('toggle', syncFaqToggle);
+    });
+    syncFaqToggle();
+  }
+
   // Guides tabs
   var tabs = document.querySelectorAll('.tabs button');
   tabs.forEach(function (t) {
