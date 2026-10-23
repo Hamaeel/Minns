@@ -38,6 +38,7 @@
 .review-platforms__link:hover{
   background:#f9fcfb;
   border-color:#dceae7;
+  box-shadow:none;
 }
 .review-platforms__link>span{overflow-wrap:anywhere}
 .review-platforms__logo{
@@ -48,7 +49,7 @@
   max-width:none;
   object-fit:contain;
 }
-.review-platforms__facts{
+.review-platforms__inner>.review-platforms__facts{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
@@ -58,6 +59,10 @@
   margin:0;
   color:#61777a;
   font-size:.78rem;
+  font-weight:400;
+  letter-spacing:normal;
+  text-transform:none;
+  white-space:normal;
   line-height:1.6;
   text-align:center;
 }
@@ -71,7 +76,7 @@
   .review-platforms__links{gap:8px}
   .review-platforms__link{min-height:58px;gap:6px;padding:9px 7px;font-size:.79rem}
   .review-platforms__logo{flex-basis:25px;width:25px;height:25px}
-  .review-platforms__facts{max-width:320px;gap:2px 12px;font-size:.76rem}
+  .review-platforms__inner>.review-platforms__facts{max-width:320px;gap:2px 12px;font-size:.76rem}
 }
 @media(max-width:359px){
   .review-platforms__link{font-size:.74rem;padding-inline:5px}
