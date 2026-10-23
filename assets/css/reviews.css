@@ -1,0 +1,15 @@
+/* Review platform strip and verified-feedback placeholder. */
+.review-platforms{background:#fff;border-block:1px solid var(--line)}
+.review-platforms__inner{padding-block:22px;display:grid;gap:16px;align-items:center}
+.review-platforms__inner>p{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);text-align:center}
+.review-platforms__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.review-platforms__link{min-width:0;display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;padding:12px 8px;border:1px solid var(--line);border-radius:10px;font-size:.85rem;font-weight:700;line-height:1.3;text-align:center;transition:border-color .2s,background-color .2s}
+.review-platforms__link:hover,.review-platforms__link:focus-visible{border-color:var(--aqua);background:var(--sky)}
+.platform-mark{display:inline-grid;place-items:center;flex:none;font-size:1.25rem;font-weight:800;line-height:1}
+.platform-mark--google{color:#4285f4}.platform-mark--yelp{color:#d32323}.platform-mark--trust{color:#00b67a}.platform-mark--trip{color:#228b78;font-size:.9rem;letter-spacing:-.25em;padding-right:4px}
+.customer-reviews__placeholder{max-width:780px;margin-inline:auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;padding:24px;background:#f3f8f7;border:1px solid #dceae7;border-radius:12px}
+.customer-reviews__symbol{font-family:Georgia,serif;font-size:4rem;line-height:.85;color:var(--aqua)}
+.customer-reviews__placeholder h3{font-size:1.2rem;margin-bottom:10px}
+.customer-reviews__placeholder p{color:var(--muted);margin-bottom:22px;max-width:540px}
+@media(min-width:700px){.review-platforms__inner{grid-template-columns:auto 1fr;gap:32px;padding-block:26px}.review-platforms__inner>p{text-align:left;white-space:nowrap}.review-platforms__links{grid-template-columns:repeat(4,minmax(0,1fr))}.customer-reviews__placeholder{padding:36px;gap:24px}}
+@media(max-width:359px){.review-platforms__link{font-size:.76rem;gap:5px;padding-inline:5px}.platform-mark{font-size:1rem}.customer-reviews__placeholder{grid-template-columns:1fr;gap:5px}}
