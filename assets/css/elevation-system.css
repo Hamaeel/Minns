@@ -1,0 +1,44 @@
+/* Consistent, restrained elevation system for Minns Water Sports. */
+:root {
+  --surface-stroke: #dceae7;
+  --surface-shadow-soft: 0 2px 8px rgba(11,30,39,.045);
+  --surface-shadow-card: 0 6px 20px rgba(11,30,39,.075);
+  --surface-shadow-float: 0 12px 32px rgba(11,30,39,.12);
+}
+.boat,
+.customer-review-card,
+.customer-reviews__placeholder,
+.cards .card,
+.feats > *,
+.steps > *,
+.contact-card,
+.wizard-review {
+  border: 1px solid var(--surface-stroke);
+  box-shadow: var(--surface-shadow-card);
+}
+.review-platforms__link,
+.gallery-tile,
+.form,
+.seg {
+  box-shadow: var(--surface-shadow-soft);
+}
+.form {
+  border: 1px solid var(--surface-stroke);
+}
+.nav,
+.nav__in {
+  border-color: #b8c9c8;
+  box-shadow: var(--surface-shadow-soft);
+}
+.offer-popup,
+.gallery-dialog {
+  box-shadow: var(--surface-shadow-float);
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .boat,.customer-review-card,.review-platforms__link,.gallery-tile {
+    transition: box-shadow .22s ease, transform .22s ease;
+  }
+  .boat:hover,.customer-review-card:hover,.gallery-tile:hover {
+    box-shadow: 0 9px 26px rgba(11,30,39,.11);
+  }
+}
