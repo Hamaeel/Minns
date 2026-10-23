@@ -48,6 +48,7 @@
 <link rel="stylesheet" href="assets/css/elevation-system.css">
 <link rel="stylesheet" href="assets/css/nav-dropdown.css">
 <link rel="stylesheet" href="assets/css/mobile-footer-fade.css">
+<link rel="stylesheet" href="assets/css/boat-dialog.css">
 <script>document.documentElement.classList.add("js")</script>
 
 <script type="application/ld+json">
@@ -580,6 +581,55 @@
   </div>
 </footer>
 
+<!-- Native modal: centered in the viewport regardless of page scroll position. -->
+<dialog class="boat-dialog" id="boatDialog" aria-labelledby="boatModalTitle" aria-describedby="boatModalPriceNote">
+  <div class="boat-dialog__shell">
+    <div class="boat-dialog__toolbar">
+      <span class="boat-dialog__eyebrow">Minns Water Sports · Exuma</span>
+      <button class="boat-dialog__close" id="boatModalClose" type="button" aria-label="Close boat details">
+        <span>Close</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="boat-dialog__scroll" id="boatDialogScroll">
+      <section class="boat-dialog__details" id="boatModalDetails" aria-label="Boat overview">
+        <figure class="boat-dialog__figure">
+          <img id="boatModalImage" alt="" width="960" height="500">
+          <figcaption id="boatModalSize" class="boat-dialog__size"></figcaption>
+        </figure>
+        <div class="boat-dialog__content">
+          <span class="boat-dialog__tag">Self-drive boat rental</span>
+          <h2 id="boatModalTitle"></h2>
+          <div class="boat-dialog__specs">
+            <span id="boatModalCapacity"></span>
+            <span id="boatModalEngine"></span>
+          </div>
+          <p class="boat-dialog__description">Explore Elizabeth Harbour at your own pace. Drivers must be 18 or older, and boats return by 5 PM.</p>
+          <div class="boat-dialog__price-block">
+            <strong id="boatModalPrice"></strong>
+            <span>/day</span>
+            <small id="boatModalTier"></small>
+          </div>
+          <p class="boat-dialog__fine" id="boatModalPriceNote">Fuel used and 12% VAT are extra. Prices depend on rental length. Booking is subject to availability.</p>
+          <p class="boat-dialog__illustration" id="boatModalArtworkNote" hidden>Illustration only. The actual boat may look different.</p>
+          <button class="btn btn--mint boat-dialog__primary" id="boatModalBook" type="button">
+            Book this boat <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </section>
+      <section class="boat-dialog__booking" id="boatModalBooking" aria-labelledby="boatModalBookingTitle" hidden>
+        <button class="boat-dialog__back" id="boatModalBack" type="button">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19 12H5m6 6-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to boat details
+        </button>
+        <h2 id="boatModalBookingTitle">Request this boat</h2>
+        <p class="boat-dialog__booking-note">Complete all three steps here. Your email app opens with a ready-to-send request; Minns will confirm availability.</p>
+        <div id="boatModalWizardHost"></div>
+      </section>
+    </div>
+  </div>
+</dialog>
+
 <div class="mbar-fade" id="mbarFade" aria-hidden="true"></div>
 <div class="mbar" id="mbar">
   <a class="btn btn--glass" href="tel:+12423363483"><svg aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
@@ -592,5 +642,6 @@
 <script src="assets/js/header-menu.js" defer></script>
 <script src="assets/js/booking-wizard.js" defer></script>
 <script src="assets/js/gallery.js" defer></script>
+<script src="assets/js/boat-dialog.js" defer></script>
 </body>
 </html>

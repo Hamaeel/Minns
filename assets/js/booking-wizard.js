@@ -80,8 +80,13 @@
     if (focus) {
       var title = panels[step].querySelector('h3');
       title.focus({preventScroll:true});
-      var r = title.getBoundingClientRect(), header = document.getElementById('nav').getBoundingClientRect().bottom;
-      if (r.top < header+16 || r.top > window.innerHeight-80) title.scrollIntoView({block:'start',behavior:motion.matches?'instant':'smooth'});
+      var modalScroll = form.closest('#boatDialog') && document.getElementById('boatDialogScroll');
+      if (modalScroll) {
+        modalScroll.scrollTop = 0;
+      } else {
+        var r = title.getBoundingClientRect(), header = document.getElementById('nav').getBoundingClientRect().bottom;
+        if (r.top < header+16 || r.top > window.innerHeight-80) title.scrollIntoView({block:'start',behavior:motion.matches?'instant':'smooth'});
+      }
     }
   }
   function buildReview() {
@@ -117,4 +122,18 @@
   show(0,false);
   document.getElementById('bookingFields').disabled = false;
   form.classList.add('wizard-ready');
+
+  // The boat detail dialog reuses this single, already-initialized booking form.
+  // Moving it in the DOM preserves field values, listeners, and step validation.
+  window.MinnsBookingWizard = Object.freeze({
+    selectBoat: function (boatId) {
+      var id = String(boatId);
+      var field = fields('boat');
+      if (!Array.from(field.options).some(function (option) { return option.value === id; })) return false;
+      field.value = id;
+      updateLimits();
+      show(0,false);
+      return true;
+    }
+  });
 }());
