@@ -1,56 +1,86 @@
 /**
- * Actual vector brand marks in the Find us strip, plus future-video teaser.
- * No media is loaded until a real video asset is provided.
+ * Brand logos and centered factual proof points.
+ * No fabricated ratings, customer counts or inactive profile links.
  */
-
-/* Keep recognisable platform logos legible without changing their shapes. */
-.review-platforms__links {
-  align-items: stretch;
-  gap: 12px;
+.review-platforms__inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding-block:24px;
 }
-.review-platforms__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 64px;
-  gap: 10px;
-  padding: 11px 12px;
-  color: #0b1e27;
-  background: #f9fcfb;
-  border: 1px solid #dceae7;
-  border-radius: 10px;
-  font-size: .88rem;
-  font-weight: 700;
-  text-align: left;
-  text-decoration: none;
+.review-platforms__links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;
+  gap:10px;
+  width:min(100%,920px);
 }
-.review-platforms__link > span {
-  overflow-wrap: anywhere;
-  line-height: 1.3;
+.review-platforms__link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+  min-height:62px;
+  gap:9px;
+  padding:11px 12px;
+  color:#0b1e27;
+  background:#f9fcfb;
+  border:1px solid #dceae7;
+  border-radius:10px;
+  font-size:.86rem;
+  font-weight:700;
+  line-height:1.35;
+  text-align:center;
+  cursor:default;
 }
-.review-platforms__logo {
-  display: block;
-  flex: 0 0 30px;
-  width: 30px;
-  height: 30px;
-  max-width: none;
-  object-fit: contain;
+.review-platforms__link:hover{
+  background:#f9fcfb;
+  border-color:#dceae7;
+  box-shadow:none;
 }
-.review-platforms__link:hover {
-  background: #f0f8f5;
-  border-color: #a4cec6;
+.review-platforms__link>span{overflow-wrap:anywhere}
+.review-platforms__logo{
+  display:block;
+  flex:0 0 29px;
+  width:29px;
+  height:29px;
+  max-width:none;
+  object-fit:contain;
 }
-.review-platforms__link:focus-visible {
-  outline: 2px solid #087f7c;
-  outline-offset: 3px;
+.review-platforms__inner>.review-platforms__facts{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:4px 16px;
+  max-width:100%;
+  margin:0;
+  color:#61777a;
+  font-size:.78rem;
+  font-weight:400;
+  letter-spacing:normal;
+  text-transform:none;
+  white-space:normal;
+  line-height:1.6;
+  text-align:center;
 }
-.review-platforms__status {
-  grid-column: 1 / -1;
-  margin: 0;
-  color: #657b7f;
-  font-size: .76rem;
-  line-height: 1.4;
-  text-align: center;
+.review-platforms__facts span{white-space:normal}
+.review-platforms__facts strong{font-weight:700;color:#31595c}
+@media(min-width:700px){
+  .review-platforms__links{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:599px){
+  .review-platforms__inner{gap:12px;padding-block:20px}
+  .review-platforms__links{gap:8px}
+  .review-platforms__link{min-height:58px;gap:6px;padding:9px 7px;font-size:.79rem}
+  .review-platforms__logo{flex-basis:25px;width:25px;height:25px}
+  .review-platforms__inner>.review-platforms__facts{max-width:320px;gap:2px 12px;font-size:.76rem}
+}
+@media(max-width:359px){
+  .review-platforms__link{font-size:.74rem;padding-inline:5px}
+  .review-platforms__logo{flex-basis:23px;width:23px;height:23px}
 }
 
 /* Video teaser is deliberately a non-playing preview until footage exists. */
@@ -160,25 +190,7 @@
   80%, 100% { opacity: 0; transform: scale(1.42); }
 }
 
-@media (min-width: 700px) {
-  .review-platforms__status {
-    grid-column: 2;
-    text-align: center;
-  }
-}
 @media (max-width: 599px) {
-  .review-platforms__links { gap: 8px; }
-  .review-platforms__link {
-    min-height: 60px;
-    padding: 10px 8px;
-    gap: 7px;
-    font-size: .82rem;
-  }
-  .review-platforms__logo {
-    flex-basis: 27px;
-    width: 27px;
-    height: 27px;
-  }
   .hero-video-launch__circle {
     width: 66px;
     height: 66px;
@@ -190,18 +202,6 @@
   .hero-video-launch__label {
     font-size: .77rem;
     padding: 7px 11px;
-  }
-}
-@media (max-width: 359px) {
-  .review-platforms__link {
-    gap: 5px;
-    padding-inline: 6px;
-    font-size: .76rem;
-  }
-  .review-platforms__logo {
-    flex-basis: 24px;
-    width: 24px;
-    height: 24px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

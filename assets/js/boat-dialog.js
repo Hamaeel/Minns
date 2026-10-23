@@ -15,6 +15,8 @@
   const close = document.getElementById("boatModalClose");
   const back = document.getElementById("boatModalBack");
   const book = document.getElementById("boatModalBook");
+  const actions = document.getElementById("boatModalActions");
+  const selection = document.getElementById("boatModalSelection");
   const image = document.getElementById("boatModalImage");
   const title = document.getElementById("boatModalTitle");
   const bookingTitle = document.getElementById("boatModalBookingTitle");
@@ -30,6 +32,7 @@
     dialog && typeof dialog.showModal === "function" &&
     form && window.MinnsBookingWizard && scrollPanel &&
     details && booking && wizardHost && close && back && book &&
+    actions && selection &&
     image && title && bookingTitle && size && capacity && engine &&
     price && tier && artworkNote
   );
@@ -40,6 +43,9 @@
   const formHomeSibling = form.nextSibling;
   const root = document.documentElement;
   const body = document.body;
+  const boatFieldLabel = form.querySelector('select[name="boat"]')?.closest("label");
+  const wizardIntro = form.querySelector('[data-booking-step="0"] .wizard-intro');
+  const originalIntro = wizardIntro?.textContent || "";
 
   let activeBoat = "";
   let opener = null;
@@ -95,12 +101,15 @@
    * @returns {void}
    */
   function restoreForm() {
-    if (form.parentNode === formHome) return;
-    if (formHomeSibling && formHomeSibling.parentNode === formHome) {
-      formHome.insertBefore(form, formHomeSibling);
-    } else {
-      formHome.appendChild(form);
+    if (form.parentNode !== formHome) {
+      if (formHomeSibling && formHomeSibling.parentNode === formHome) {
+        formHome.insertBefore(form, formHomeSibling);
+      } else {
+        formHome.appendChild(form);
+      }
     }
+    if (boatFieldLabel) boatFieldLabel.hidden = false;
+    if (wizardIntro) wizardIntro.textContent = originalIntro;
   }
 
   /**
@@ -119,6 +128,7 @@
 
     title.textContent = boatName.textContent.trim();
     bookingTitle.textContent = `Book ${title.textContent}`;
+    selection.textContent = `Selected boat: ${title.textContent}`;
     size.textContent = sizeBadge ? sizeBadge.textContent.trim() : "";
     capacity.textContent = meta[0]?.textContent.trim() || "";
     engine.textContent = meta[1]?.textContent.trim() || "";
@@ -146,6 +156,7 @@
     opener = source;
     booking.hidden = true;
     details.hidden = false;
+    actions.hidden = false;
     dialog.setAttribute("aria-labelledby", "boatModalTitle");
     dialog.setAttribute("aria-describedby", "boatModalPriceNote");
     scrollPanel.scrollTop = 0;
@@ -168,13 +179,15 @@
    * @returns {void}
    */
   function startBooking() {
-    if (!activeBoat) return;
+    if (!activeBoat || !window.MinnsBookingWizard.selectBoat(activeBoat)) return;
     wizardHost.appendChild(form);
+    if (boatFieldLabel) boatFieldLabel.hidden = true;
+    if (wizardIntro) wizardIntro.textContent = "Choose your dates and number of guests.";
     details.hidden = true;
     booking.hidden = false;
+    actions.hidden = true;
     dialog.setAttribute("aria-labelledby", "boatModalBookingTitle");
     dialog.removeAttribute("aria-describedby");
-    window.MinnsBookingWizard.selectBoat(activeBoat);
     scrollPanel.scrollTop = 0;
     back.focus({ preventScroll: true });
   }
@@ -186,6 +199,7 @@
   function backToDetails() {
     booking.hidden = true;
     details.hidden = false;
+    actions.hidden = false;
     dialog.setAttribute("aria-labelledby", "boatModalTitle");
     dialog.setAttribute("aria-describedby", "boatModalPriceNote");
     scrollPanel.scrollTop = 0;

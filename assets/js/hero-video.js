@@ -1,5 +1,5 @@
 /**
- * Future-video preview control and unconnected profile-link notices.
+ * Accessible future-video preview control.
  * No video requests or fabricated platform navigation are performed.
  */
 (() => {
@@ -7,7 +7,6 @@
 
   const trigger = document.getElementById("heroVideoLaunch");
   const notice = document.getElementById("heroVideoNotice");
-  const profileStatus = document.getElementById("reviewPlatformStatus");
 
   /**
    * Show or hide the informative video placeholder.
@@ -40,13 +39,4 @@
     });
   }
 
-  // Business profile URLs are pending; avoid '#' jumping the page to its top.
-  document.querySelectorAll("[data-profile-pending]").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (!profileStatus) return;
-      const platform = link.querySelector("span")?.textContent?.trim() || "This";
-      profileStatus.textContent = `${platform} business profile link coming soon.`;
-    });
-  });
 })();
