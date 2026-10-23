@@ -13,3 +13,23 @@
 .customer-reviews__placeholder p{color:var(--muted);margin-bottom:22px;max-width:540px}
 @media(min-width:700px){.review-platforms__inner{grid-template-columns:auto 1fr;gap:32px;padding-block:26px}.review-platforms__inner>p{text-align:left;white-space:nowrap}.review-platforms__links{grid-template-columns:repeat(4,minmax(0,1fr))}.customer-reviews__placeholder{padding:36px;gap:24px}}
 @media(max-width:359px){.review-platforms__link{font-size:.76rem;gap:5px;padding-inline:5px}.platform-mark{font-size:1rem}.customer-reviews__placeholder{grid-template-columns:1fr;gap:5px}}
+
+/* Guest review discovery cards; no unverified ratings or quotations. */
+.customer-reviews__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.customer-review-card{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:22px;background:#f3f8f7;border:1px solid #dceae7;border-radius:12px}
+.customer-review-card__brand{font-size:.82rem;font-weight:800;letter-spacing:.01em}
+.customer-review-card__brand--google{color:#2875cf}
+.customer-review-card__brand--trip{color:#176d59}
+.customer-review-card__brand--yelp{color:#bb2020}
+.customer-review-card h3{font-size:1.15rem;line-height:1.3}
+.customer-review-card p{font-size:.94rem;color:var(--muted);line-height:1.6;flex:1}
+.customer-review-card a{min-height:44px;display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.customer-reviews__note{font-size:.82rem;color:var(--muted);text-align:center;margin-top:18px}
+@media(min-width:700px){.customer-reviews__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.customer-review-card{padding:26px}}
+@media(max-width:599px){
+ .review-platforms__inner{gap:12px;padding-block:18px}
+ .review-platforms__links{gap:8px}
+ .review-platforms__link{min-height:52px}
+ .customer-reviews .head{margin-bottom:24px}
+ .customer-review-card{padding:20px}
+}
