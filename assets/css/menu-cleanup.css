@@ -1,0 +1,7 @@
+/* Minimal navigation: remove promotional layout and visual clutter. */
+.menu-overlay__inner{grid-template-rows:auto 1fr}
+.menu-overlay__main{width:100%;max-width:560px;align-self:center;padding-block:36px}
+.menu-overlay .nav__links{display:grid;gap:0}
+.menu-overlay .nav__links a{display:block;min-height:56px;padding:16px 4px;text-align:left;font:500 clamp(1.35rem,4vw,2rem)/1.25 var(--display);letter-spacing:-.025em;border-bottom:1px solid rgba(255,255,255,.16);border-radius:0}
+.menu-overlay .nav__links li:last-child a{border-bottom:0}
+@media(max-width:599px){.menu-overlay__main{padding:24px var(--gutter)}.menu-overlay .nav__links a{font-size:1.45rem;min-height:58px}}
