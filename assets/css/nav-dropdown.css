@@ -51,7 +51,7 @@
   z-index: 5;
   top: calc(100% + 10px);
   left: 16px;
-  width: min(352px, calc(100vw - 2 * var(--gutter)));
+  width: min(352px, calc(100% - 32px));
   max-height: min(520px, calc(100dvh - 120px));
   overflow-x: hidden;
   overflow-y: auto;
@@ -177,7 +177,7 @@
   .nav#nav .nav-dropdown {
     left: 0;
     top: calc(100% + 8px);
-    width: min(340px, calc(100vw - 2 * var(--gutter)));
+    width: min(340px, 100%);
     max-height: calc(100dvh - 110px);
     padding: 14px;
   }
