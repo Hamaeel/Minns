@@ -1,0 +1,12 @@
+/* Subtle one-time section reveal; only sections initialized by JavaScript animate. */
+@media(prefers-reduced-motion:no-preference){
+ main > section.section-reveal{
+   opacity:0;
+   transform:translate3d(0,22px,0);
+   transition:opacity .65s ease-out,transform .65s ease-out;
+ }
+ main > section.section-reveal.in{
+   opacity:1;
+   transform:none;
+ }
+}
