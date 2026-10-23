@@ -41,6 +41,7 @@
 <link rel="stylesheet" href="assets/css/reviews.css">
 <link rel="stylesheet" href="assets/css/mobile-polish.css">
 <link rel="stylesheet" href="assets/css/section-contrast.css">
+<link rel="stylesheet" href="assets/css/booking-offer.css">
 <script>document.documentElement.classList.add("js")</script>
 
 <script type="application/ld+json">
@@ -490,26 +491,11 @@
       </div>
     </div>
     <div class="customer-reviews__grid">
-      <article class="customer-review-card">
-        <span class="customer-review-card__brand customer-review-card__brand--google">Google Maps</span>
-        <h3>Guest experiences on Google</h3>
-        <p>Customer feedback and local recommendations from visitors.</p>
-        <a href="#" aria-label="Google Maps reviews link coming soon">View Google reviews <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="customer-review-card">
-        <span class="customer-review-card__brand customer-review-card__brand--trip">Tripadvisor</span>
-        <h3>Travelers on Tripadvisor</h3>
-        <p>Read about boat rental experiences in Exuma.</p>
-        <a href="#" aria-label="Tripadvisor reviews link coming soon">View Tripadvisor reviews <span aria-hidden="true">→</span></a>
-      </article>
-      <article class="customer-review-card">
-        <span class="customer-review-card__brand customer-review-card__brand--yelp">Yelp</span>
-        <h3>Discover feedback on Yelp</h3>
-        <p>Explore community feedback when the listing is connected.</p>
-        <a href="#" aria-label="Yelp reviews link coming soon">View Yelp reviews <span aria-hidden="true">→</span></a>
-      </article>
+      <article class="customer-review-card"><span class="customer-review-card__brand customer-review-card__brand--google">Google Maps</span><span class="review-demo-label">Sample review — not a real customer</span><div class="review-demo-stars" aria-hidden="true">★★★★★</div><h3>A great day on the water</h3><blockquote>“The boat was easy to handle and the island views were beautiful. A memorable day exploring Exuma.”</blockquote><p class="review-demo-author">Sample Guest · Demo content</p></article>
+      <article class="customer-review-card"><span class="customer-review-card__brand customer-review-card__brand--trip">Tripadvisor</span><span class="review-demo-label">Sample review — not a real customer</span><div class="review-demo-stars" aria-hidden="true">★★★★★</div><h3>Explore at your own pace</h3><blockquote>“We loved having the freedom to visit beaches and enjoy the harbour on our own schedule.”</blockquote><p class="review-demo-author">Sample Traveler · Demo content</p></article>
+      <article class="customer-review-card"><span class="customer-review-card__brand customer-review-card__brand--yelp">Yelp</span><span class="review-demo-label">Sample review — not a real customer</span><div class="review-demo-stars" aria-hidden="true">★★★★★</div><h3>Wonderful island experience</h3><blockquote>“A fun way to see the water, stop for photos and spend time together as a family.”</blockquote><p class="review-demo-author">Sample Visitor · Demo content</p></article>
     </div>
-    <p class="customer-reviews__note">Review links are being connected. Ratings and testimonials will be shown once verified.</p>
+    <p class="customer-reviews__note">These are design samples only, not verified customer testimonials. Replace before publishing real reviews.</p>
   </div>
 </section>
 
@@ -606,6 +592,17 @@
   <a class="btn btn--mint" href="#reserve">Book a boat</a>
 </div>
 
+
+<div class="offer-popup" id="offerPopup" role="dialog" aria-modal="false" aria-labelledby="offerTitle" aria-describedby="offerDesc" hidden>
+  <button type="button" class="offer-popup__close" id="offerClose" aria-label="Close offer preview">×</button>
+  <span class="offer-popup__eyebrow">Offer preview · Demo only</span>
+  <h2 id="offerTitle">Your next Exuma adventure awaits</h2>
+  <p id="offerDesc">Sample promotional layout. No discount or limited-time offer is currently active.</p>
+  <div class="offer-popup__timer"><span>Demo countdown</span><strong id="offerCountdown" aria-label="Demo countdown">15:00</strong></div>
+  <a class="btn btn--mint" href="#reserve" id="offerBook">Explore booking</a>
+</div>
+
+<script src="assets/js/offer-popup.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/header-menu.js" defer></script>
 <script src="assets/js/booking-wizard.js" defer></script>
