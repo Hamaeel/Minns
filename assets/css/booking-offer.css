@@ -7,14 +7,4 @@
 .review-demo-stars{color:#008e75;letter-spacing:3px;font-size:1.1rem}
 .customer-review-card blockquote{margin:0;color:var(--ink);font-size:.95rem;line-height:1.65;flex:1}
 .customer-review-card .review-demo-author{font-size:.82rem;font-weight:700;margin-top:auto}
-.offer-popup[hidden]{display:none!important}
-.offer-popup{position:fixed;z-index:75;right:20px;bottom:24px;width:min(360px,calc(100vw - 32px));padding:24px;background:#fff;border:1px solid #dceae7;border-radius:12px;box-shadow:0 12px 38px rgba(11,30,39,.18);color:var(--ink)}
-.offer-popup__close{position:absolute;right:12px;top:10px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:8px;background:#eef6f4;font-size:1.5rem;cursor:pointer}
-.offer-popup__eyebrow{display:block;margin-bottom:10px;color:#137b72;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding-right:30px}
-.offer-popup h2{font-size:1.45rem;line-height:1.2;margin-bottom:10px;padding-right:12px}
-.offer-popup p{font-size:.88rem;line-height:1.55;color:var(--muted)}
-.offer-popup__timer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;margin:12px 0;border-block:1px solid #dceae7;font-size:.82rem}
-.offer-popup__timer strong{font-variant-numeric:tabular-nums;font-size:1.5rem}
-.offer-popup .btn{width:100%}
-@media(max-width:599px){.reserve,#reserve{background-position:55% center}.offer-popup{right:12px;bottom:90px;width:calc(100vw - 24px);padding:20px}.offer-popup h2{font-size:1.25rem}}
-@media(prefers-reduced-motion:reduce){.offer-popup *{transition:none!important;animation:none!important}}
+@media(max-width:599px){.reserve,#reserve{background-position:55% center}}
