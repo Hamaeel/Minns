@@ -26,3 +26,9 @@
  #guides{background:#f0f7f5}
  #reviews{background:#eef6f4}
 }
+
+/* Header is outside <main>, so the gap behind it inherits the body color. */
+body{background:#eaf5f2}
+.foot{background:#fff}
+/* Preserve the white frosted navigation card and mint hero behind it. */
+.nav{background:rgba(255,255,255,.9)}
