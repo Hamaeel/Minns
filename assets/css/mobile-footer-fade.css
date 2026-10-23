@@ -34,3 +34,16 @@
 @media (prefers-reduced-motion: reduce) {
   .mbar-fade { transition: none; }
 }
+
+/* Match the fixed mobile Call / Book bar's outer edges to the sticky header.
+   Both use --gutter, including the narrower <=359px breakpoint. */
+@media (max-width: 899px) {
+  .mbar {
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    max-width: var(--max);
+    margin-inline: auto;
+    box-sizing: border-box;
+  }
+}
