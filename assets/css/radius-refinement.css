@@ -1,0 +1,78 @@
+/* Subtle corners throughout Minns Water Sports.
+   Keep circles (progress steps, small indicators and circular icons) round.
+   Only border-radius values are changed here. */
+:root {
+  --r-sm: 8px;
+  --r: 10px;
+  --r-lg: 12px;
+}
+
+/* Main actions, small buttons and pill-style labels. */
+.btn,
+.btn:focus-visible,
+.nav__links a {
+  border-radius: 8px;
+}
+
+.tag {
+  border-radius: 6px;
+}
+
+/* Booking, rate filters and the floating mobile action bar. */
+.seg,
+.large-text .seg,
+.mbar {
+  border-radius: 10px;
+}
+
+.seg button {
+  border-radius: 7px;
+}
+
+/* Site navigation and its expanded menu. */
+.nav,
+.nav__in,
+.menu-overlay .wrap.nav__in {
+  border-radius: 12px;
+}
+
+.nav.compact .nav__links {
+  border-radius: 10px;
+}
+
+/* Image tiles, thumbnails, overlays and review cards. */
+.gallery-tile,
+.gallery-dialog,
+.menu-intro__image {
+  border-radius: 12px;
+}
+
+.boat .boat__size--photo,
+.gallery-dialog figure img,
+.contact-card__icon,
+.wizard-fallback,
+.wizard-errors {
+  border-radius: 8px;
+}
+
+.boat__size--photo > span,
+.menu-intro__image figcaption {
+  border-radius: 4px;
+}
+
+.gallery-dialog button {
+  border-radius: 7px;
+}
+
+.wizard-review {
+  border-radius: 10px;
+}
+
+/* Quiet aqua-tinted fleet cards for better separation from the white page. */
+.boat {
+  background: #f3f8f7;
+  border-color: #dceae7;
+}
+.boat .btn {
+  background: #fff;
+}
