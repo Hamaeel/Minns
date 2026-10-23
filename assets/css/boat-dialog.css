@@ -37,10 +37,10 @@
 
 /* Compact modal: image, essentials and one persistent CTA. */
 .boat-dialog:not([open]){display:none!important}
-.boat-dialog{position:fixed;inset:0;width:min(680px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 24px);height:auto;margin:auto;padding:0;overflow:hidden;color:#0b1e27;background:#fff;border:1px solid #cfddda;border-radius:12px;box-shadow:0 16px 42px rgba(6,26,34,.18)}
+.boat-dialog{position:fixed;inset:auto;top:50%;left:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:min(680px,calc(100vw - 24px));max-width:none;height:fit-content;max-height:calc(100dvh - 24px);margin:0;padding:0;overflow:hidden;color:#0b1e27;background:#fff;border:1px solid #cfddda;border-radius:12px;box-shadow:0 16px 42px rgba(6,26,34,.18)}
 .boat-dialog::backdrop{background:rgba(4,20,28,.69);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .boat-dialog__shell{position:relative;display:flex;flex-direction:column;min-height:0;max-height:calc(100dvh - 24px);overflow:hidden}
-.boat-dialog__scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.boat-dialog__scroll{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
 .boat-dialog__close{position:absolute;z-index:4;top:12px;right:12px;display:grid;place-items:center;width:44px;height:44px;padding:8px;color:#0b1e27;background:rgba(255,255,255,.97);border:1px solid rgba(11,30,39,.19);border-radius:9px;cursor:pointer}
 .boat-dialog__close svg,.boat-dialog__back svg{width:20px;height:20px}
 .boat-dialog__figure{position:relative;height:clamp(194px,29vh,275px);margin:0;overflow:hidden;background:#e4f1ee}
