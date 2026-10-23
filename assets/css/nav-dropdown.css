@@ -10,9 +10,9 @@
   margin: 0 auto;
   overflow: visible;
   background: rgba(255, 255, 255, .98);
-  border: 1px solid #95b0ad;
+  border: 1px solid rgba(11, 30, 39, .56);
   border-radius: 12px;
-  box-shadow: 0 0 0 1px rgba(11, 30, 39, .12), 0 4px 16px rgba(11, 30, 39, .055);
+  box-shadow: 0 4px 16px rgba(11, 30, 39, .045);
 }
 
 /* 100%-white behind the nav, gradually transparent below the sticky header. */
@@ -30,9 +30,47 @@
 
 /* Stronger visible stroke on the card, including its top edge. */
 .nav#nav > .nav__in {
+  position: relative;
+  z-index: 2;
   border: 0;
   border-radius: 11px;
   background: transparent;
+}
+
+/* A foreground outline remains visible at both the top and bottom,
+   independent of the white fade and blurred backdrop behind it. */
+.nav#nav::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 1px solid rgba(11, 30, 39, .56);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Restore the signature centered logo spilling slightly outside the bar.
+   Keep the anchor in the layout; only the artwork overflows vertically. */
+.nav#nav .nav__brand {
+  position: relative;
+  z-index: 3;
+  width: 170px;
+  height: 64px;
+  min-width: 0;
+  overflow: visible;
+}
+.nav#nav .nav__brand img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 180px;
+  height: 120px;
+  max-width: none;
+  object-fit: contain;
+  mix-blend-mode: normal;
+  filter: none;
 }
 
 .nav#nav .nav__icon-close {
@@ -174,6 +212,14 @@
     top: -8px;
     height: calc(100% + 54px);
   }
+  .nav#nav .nav__brand {
+    width: 124px;
+    height: 50px;
+  }
+  .nav#nav .nav__brand img {
+    width: 146px;
+    height: 98px;
+  }
   .nav#nav .nav-dropdown {
     left: 0;
     top: calc(100% + 8px);
@@ -187,6 +233,14 @@
   }
 }
 @media (max-width: 359px) {
+  .nav#nav .nav__brand {
+    width: 112px;
+    height: 48px;
+  }
+  .nav#nav .nav__brand img {
+    width: 132px;
+    height: 88px;
+  }
   .nav#nav .nav-dropdown {
     padding: 12px;
   }
