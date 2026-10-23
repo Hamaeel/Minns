@@ -1,23 +1,24 @@
-/* Compact sticky header: white at the top, smoothly transparent below.
-   Do not paint a large opaque panel over the next section. */
+/* Sticky header: full-width white backdrop fading away below the controls. */
 .nav::before{
  content:"";
  position:absolute;
- pointer-events:none;
  z-index:-1;
+ pointer-events:none;
  left:50%;
- top:-16px;
+ top:-20px;
  transform:translateX(-50%);
  width:100vw;
- height:126px;
- background:linear-gradient(to bottom,
-   rgba(255,255,255,1) 0%,
-   rgba(255,255,255,.96) 30%,
-   rgba(255,255,255,.66) 65%,
-   rgba(255,255,255,0) 100%);
+ height:145px;
+ background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,.98) 26%,rgba(255,255,255,.82) 58%,rgba(255,255,255,0) 100%);
 }
-.nav{border:1px solid rgba(11,30,39,.25);box-shadow:none}
+.nav{
+ border:1px solid rgba(11,30,39,.24);
+ box-shadow:none;
+}
 @media(max-width:599px){
+ /* Avoid the double header-height offset that pushed content far down. */
  .nav{top:12px;margin-top:12px}
- .nav::before{top:-14px;height:112px}
+ .nav::before{top:-18px;height:130px}
+ .hero{padding-top:44px}
+ .hero__grid{gap:24px}
 }
