@@ -1,0 +1,29 @@
+/* Mobile spacing refinement: comfortable rhythm without oversized empty areas. */
+@media (max-width:599px){
+  :root{--gutter:22px;--sec:64px}
+  .hero{padding-bottom:64px}
+  .hero__grid{gap:32px}
+  .hero__sub{margin-top:18px;line-height:1.65}
+  .hero__list{margin-top:24px;gap:12px}
+  .hero__ctas{margin-top:28px;gap:12px}
+  .review-platforms__inner{padding-block:26px}
+  main>.sec{padding-block:68px}
+  main>.sec .head{margin-bottom:32px}
+  .head{gap:18px}
+  .head .lead{line-height:1.65}
+  .boat{padding:24px 18px;row-gap:18px}
+  .boat__right{padding-top:18px;gap:14px}
+  .fleet-list,.boats{row-gap:16px}
+  .form{padding:24px 20px}
+  .form__grid{row-gap:18px}
+  .wizard-actions{gap:12px;margin-top:20px}
+  .foot__grid{gap:36px}
+  .foot__bottom{gap:16px}
+  .offer-popup{padding:22px}
+}
+@media(max-width:359px){
+  :root{--gutter:16px}
+  main>.sec{padding-block:56px}
+  .boat{padding-inline:14px}
+  .form{padding:20px 16px}
+}
