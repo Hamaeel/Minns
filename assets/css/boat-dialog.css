@@ -204,6 +204,16 @@
   font-size: .82rem;
   line-height: 1.6;
 }
+.boat-dialog__illustration {
+  margin: -8px 0 18px;
+  padding: 10px 12px;
+  color: #52646b;
+  background: #f6f8f5;
+  border: 1px solid #dceae7;
+  border-radius: 7px;
+  font-size: .79rem;
+  line-height: 1.5;
+}
 .boat-dialog__primary {
   display: flex;
   width: 100%;
