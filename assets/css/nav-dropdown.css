@@ -255,6 +255,12 @@
     margin-top: 28px;
     overflow: visible;
   }
+  /* Extend the full-width fade through the gap ABOVE the floating header.
+     Start immediately below the announcement bar, not at the nav card edge. */
+  .nav#nav::before {
+    top: -28px;
+    height: calc(100% + 88px);
+  }
   .nav#nav > .nav__in {
     min-height: 94px;
     padding-block: 5px;
