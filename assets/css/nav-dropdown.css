@@ -232,6 +232,14 @@
     font-size: .98rem;
   }
 }
+/* Keep the logo clear of the booking control around 360–399px widths. */
+@media (min-width: 360px) and (max-width: 399px) {
+  .nav#nav .nav__brand img {
+    width: 136px;
+    height: 92px;
+  }
+}
+
 @media (max-width: 359px) {
   .nav#nav .nav__brand {
     width: 112px;
