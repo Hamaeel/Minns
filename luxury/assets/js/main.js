@@ -70,6 +70,29 @@
       if (e.key === 'ArrowLeft') show(-1);
       if (e.key === 'ArrowRight') show(1);
     });
+    // Phones: swipe sideways to change boat.
+    var sx = null, sy = 0;
+    boats.addEventListener('touchstart', function (e) {
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    }, { passive: true });
+    boats.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx;
+      var dy = e.changedTouches[0].clientY - sy;
+      sx = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? 1 : -1);
+    }, { passive: true });
+  }
+
+  // Phones: quick call/book bar once the hero is gone, hidden again at the contact block.
+  var mbar = document.querySelector('.mbar');
+  var hero = document.querySelector('.hero');
+  var contact = document.querySelector('.contact');
+  if (mbar && hero && contact && 'IntersectionObserver' in window) {
+    var heroOut = false, contactIn = false;
+    var sync = function () { mbar.classList.toggle('is-on', heroOut && !contactIn); };
+    new IntersectionObserver(function (en) { heroOut = !en[en.length - 1].isIntersecting; sync(); }).observe(hero);
+    new IntersectionObserver(function (en) { contactIn = en[en.length - 1].isIntersecting; sync(); }).observe(contact);
   }
 
   // Frames 4 -> 5: the boat sails up and the water fades to paper.

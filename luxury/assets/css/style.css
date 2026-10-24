@@ -75,6 +75,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .js .is-intro .hero__rule { transform: scaleX(0); opacity: 0; transition-delay: 0s; }
 .js .is-intro .logo__navy { opacity: 1; }
 
+.hero__sub, .hero__call, .mbar { display: none; }
+
 /* ---------- 2: introduction ---------- */
 .intro__title { left: 452px; top: 166px; font: 45px/normal var(--serif); color: var(--navy); white-space: nowrap; }
 .intro__text { left: 277px; top: 242px; width: 727px; font: 200 28px/47px var(--sans); text-transform: lowercase; color: var(--navy); }
@@ -208,56 +210,76 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .vl, .hero__rule, .boats__side { display: none; }
   .water, .hero__water, .harbour__fade { position: absolute !important; inset: 0 !important; }
 
-  .hero .stage { min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 20px 16px 48px; }
-  .hero__nav { order: 2; gap: 20px; font-size: 12px; margin-top: 18px; }
+  .hero .stage { min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 20px 16px 40px; }
+  .hero__nav { order: 2; gap: 8px; font-size: 12px; margin-top: 10px; }
+  .hero__nav a { padding: 12px 8px; }
   .hero__logo { order: 1; }
-  .hero__title { order: 3; width: 100%; margin-top: 18svh; font-size: 40px; line-height: 48px; }
+  .hero__title { order: 3; width: 100%; margin-top: 12svh; font-size: 40px; line-height: 48px; }
   .hero__gap { height: 120px; }
   .hero__shadow, .harbour__shadow, .contact__shadow { display: none; }
-  .hero__boat { position: absolute !important; left: 50% !important; top: calc(20px + 24px + 18px + 17px + 18svh + 48px + 13px) !important; width: 300px; height: auto; transform: translateX(-50%); }
-  .hero__cta { order: 4; margin-top: auto; right: auto; translate: none; gap: 10px; font-size: 13px; padding: 12px 20px; }
+  .hero__boat { position: absolute !important; left: 50% !important; top: calc(20px + 24px + 10px + 41px + 12svh + 48px + 13px) !important; width: 300px; height: auto; transform: translateX(-50%); }
+  .hero__sub { display: block; order: 4; max-width: 320px; margin-top: 28px; font: 300 16px/1.5 var(--sans); color: rgba(255, 255, 255, 0.88); text-align: center; }
+  .hero__cta { order: 5; margin-top: 28px; right: auto; translate: none; justify-content: center; width: 100%; max-width: 320px; min-height: 50px; gap: 10px; font-size: 13px; padding: 14px 20px; }
+  .hero__call { display: block; order: 6; margin-top: 14px; padding: 10px; font: 400 14px/1 var(--sans); color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255, 255, 255, 0.5); }
+  .js .is-intro .hero__sub, .js .is-intro .hero__call { opacity: 0; }
+  .hero__sub, .hero__call { transition: opacity 1s var(--ease) 0.8s; }
   .hero__nav { translate: none; }
   .js .is-intro .hero__water { clip-path: inset(36% 12%); }
 
-  .intro .stage { padding: 72px 16px; }
-  .intro__title { font-size: 34px; }
-  .intro__text { width: auto; margin-top: 20px; font-size: 20px; line-height: 34px; }
+  .intro .stage { padding: 64px 20px 56px; }
+  .intro__title { font-size: 32px; }
+  .intro__text { width: auto; margin-top: 18px; font-size: 19px; line-height: 32px; }
 
-  .boats .stage { display: grid; justify-items: center; padding: 64px 16px; }
+  .boats .stage { display: grid; justify-items: center; padding: 56px 16px 64px; touch-action: pan-y; }
   .boats__main { width: 120px; height: 384px; margin: 0 0 8px; }
   .boats.is-swapping .boats__main { transform: translateY(calc(var(--dir) * -24px)); }
-  .boats__arrows { position: absolute !important; top: 280px !important; left: 16px !important; right: 16px; width: auto; }
-  .boats__badge { position: absolute !important; left: calc(50% - 48px) !important; top: 230px !important; }
+  .boats__arrows { position: absolute !important; top: 254px !important; left: 4px !important; right: 4px; width: auto; }
+  .boats__btn { width: 48px; height: 48px; justify-content: center; margin: 0; }
+  .boats__badge { position: absolute !important; left: calc(50% - 48px) !important; top: 222px !important; }
   .boats__name { width: auto; font-size: 28px; white-space: normal; }
-  .boats__specs { width: auto; margin-top: 12px; font-size: 18px; }
+  .boats__specs { width: auto; margin-top: 12px; font-size: 17px; }
+  .boats__specs { flex-wrap: wrap; white-space: normal; }
+  .boats__specs::after { content: "Swipe or tap the arrows"; flex-basis: 100%; margin-top: 14px; font: 300 12px/1.4 var(--sans); letter-spacing: 0.04em; text-transform: none; color: rgba(30, 60, 62, 0.55); text-align: center; }
 
-  .harbour .stage { min-height: 560px; padding: 80px 16px 0; text-align: center; }
+  .harbour .stage { min-height: 600px; padding: 72px 16px 0; text-align: center; }
   .harbour__pin { position: relative; height: auto; }
-  .harbour__title { width: auto; font-size: 40px; line-height: 52px; white-space: normal; }
-  .harbour__boat { width: 300px; height: auto; margin: 150px auto -60px; transform: rotate(90deg); }
-  .harbour__note { position: absolute !important; left: 50% !important; top: 330px !important; margin-left: 66px; width: 110px; text-align: left; opacity: 1; }
+  .harbour__title { width: auto; font-size: 38px; line-height: 48px; white-space: normal; }
+  .harbour__boat { width: 300px; height: auto; margin: 130px auto -80px; transform: rotate(90deg); }
+  .harbour__note { display: none; } /* same line opens the map section right below */
   .harbour .water::after { opacity: 1; }
   .harbour__fade { opacity: 0; }
 
-  .map .stage { display: flex; flex-direction: column; padding: 64px 16px; }
-  .map__img { order: 5; width: 100%; height: auto; margin-top: 32px; }
+  .map .stage { display: flex; flex-direction: column; padding: 56px 16px 64px; }
+  .map__img { order: 3; width: calc(100% + 32px); max-width: none; height: auto; margin: 28px -16px 0; }
   .map__title { white-space: normal; font-size: 30px; }
   .map__sub { width: auto; margin-top: 8px; }
-  .map__badge { align-self: flex-end; margin-top: 16px; }
-  .map__list { width: auto; margin-top: 32px; gap: 24px; }
+  .map__list { order: 4; }
+  .map__badge { order: 5; align-self: center; margin-top: 36px; }
+  .map__list { width: auto; margin-top: 32px; gap: 22px; padding-left: 14px; border-left: 1px solid var(--line); }
 
-  .faq .stage { padding: 64px 16px 120px; }
-  .faq__row { flex-direction: column; gap: 40px; }
+  .faq .stage { padding: 56px 16px 120px; }
+  .faq__row { flex-direction: column; gap: 36px; }
   .faq__aside, .faq__list, .faq__head { width: 100%; }
+  .faq__aside { gap: 28px; }
+  .faq__head h2 { font-size: 30px; }
+  .faq__head p { font-size: 16px; }
   .faq__flyer > img { width: 100%; }
-  .faq__list summary { padding-right: 52px; }
-  .faq__list details p { height: auto; margin-top: 0; padding-bottom: 20px; }
+  .faq__list summary { min-height: 60px; padding: 20px 52px 18px 0; font-size: 15px; line-height: 1.35; }
+  .faq__icon { top: 14px; right: 0; }
+  .faq__list details p { height: auto; margin-top: 0; padding: 0 8px 20px 0; font-size: 15px; line-height: 1.55; }
 
-  .contact .stage { padding: 32px 16px 40px; display: flex; flex-direction: column; }
-  .contact__links { order: 1; align-self: flex-end; gap: 16px; font-size: 12px; }
-  .contact__title { order: 2; width: auto; margin-top: 56px; font-size: 48px; line-height: 60px; }
+  .contact .stage { padding: 24px 16px 96px; display: flex; flex-direction: column; }
+  .contact__links { order: 1; align-self: flex-end; gap: 4px; font-size: 12px; }
+  .contact__links a { padding: 12px 8px; }
+  .contact__title { order: 2; width: auto; margin-top: 36px; font-size: 44px; line-height: 54px; }
   .contact__info { order: 3; width: auto; margin-top: 40px; gap: 28px; }
   .contact__info dd { font-size: 20px; }
-  .contact__boat { order: 4; width: 260px; height: auto; margin: 170px auto 120px; }
+  .contact__info dd a { display: inline-block; padding: 6px 0; }
+  .contact__boat { order: 4; width: 240px; height: auto; margin: 130px auto 96px; }
   .contact__logo { order: 5; align-self: flex-end; }
+
+  .mbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 50; gap: 8px; padding: 6px; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 999px; background: rgba(2, 55, 99, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(6, 42, 67, 0.28); translate: 0 140%; transition: translate 0.5s var(--ease); }
+  .mbar.is-on { translate: 0 0; }
+  .mbar a { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 999px; font: 400 13px/1 var(--ui); letter-spacing: 0.06em; text-transform: uppercase; color: #fff; }
+  .mbar__book { background: #fff; color: var(--blue) !important; }
 }
