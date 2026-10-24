@@ -11,21 +11,44 @@
   else window.addEventListener('load', function () { setTimeout(openHero, 700); });
   setTimeout(openHero, 3000);
 
-  // Boats: real fleet, from the Minns price list.
+  // Boats: real fleet, from the Minns price list. The three top-view images we
+  // have rotate through the slots, so the boat on screen changes with the specs.
+  var white = 'assets/img/boat-white.png';
+  var woodA = 'assets/img/boat-wood-a.png';
+  var woodB = 'assets/img/boat-wood-b.png';
   var fleet = [
-    { name: "17' Boston Whaler", people: '6 people', power: '70hp', length: "17'" },
-    { name: "19' Power Cat / Whaler", people: '6 people', power: '115hp', length: "19'" },
-    { name: "20' Power Cat", people: '7 people', power: 'twin engine', length: "20'" },
-    { name: "21' Boston Whaler", people: '8 people', power: '2 x 90hp', length: "21'" },
-    { name: "22' Power Cat / Whaler", people: '8 people', power: 'twin engine', length: "22'" },
-    { name: "26' Power Cat", people: '10 people', power: '2 x 115hp', length: "26'" }
+    { name: "17' Boston Whaler", people: '6 people', power: '70hp', length: "17'", img: white },
+    { name: "19' Power Cat / Whaler", people: '6 people', power: '115hp', length: "19'", img: woodA },
+    { name: "20' Power Cat", people: '7 people', power: 'twin engine', length: "20'", img: woodB },
+    { name: "21' Boston Whaler", people: '8 people', power: '2 x 90hp', length: "21'", img: white },
+    { name: "22' Power Cat / Whaler", people: '8 people', power: 'twin engine', length: "22'", img: woodA },
+    { name: "26' Power Cat", people: '10 people', power: '2 x 115hp', length: "26'", img: woodB }
   ];
   var boats = document.querySelector('.boats');
   if (boats) {
     var i = 0;
     var nameEl = boats.querySelector('.boats__name');
+    var slot = function (k) { return boats.querySelector('[data-slot="' + k + '"]'); };
     var spec = function (k) { return boats.querySelector('[data-spec="' + k + '"]'); };
+    var at = function (n) { return fleet[(n % fleet.length + fleet.length) % fleet.length]; };
     var busy = false;
+
+    // Preload, so a swapped image is never a blank frame.
+    fleet.forEach(function (b) { var im = new Image(); im.src = b.img; });
+
+    var paint = function () {
+      var b = at(i);
+      nameEl.textContent = b.name;
+      spec('people').textContent = b.people;
+      spec('power').textContent = b.power;
+      spec('length').textContent = b.length;
+      slot('main').src = b.img;
+      slot('main').alt = b.name + ' seen from above';
+      slot('prev').src = at(i - 1).img;
+      slot('next').src = at(i + 1).img;
+    };
+    paint();
+
     var show = function (dir) {
       if (busy) return;
       busy = true;
@@ -33,11 +56,7 @@
       boats.style.setProperty('--dir', dir);
       boats.classList.add('is-swapping');
       setTimeout(function () {
-        var b = fleet[i];
-        nameEl.textContent = b.name;
-        spec('people').textContent = b.people;
-        spec('power').textContent = b.power;
-        spec('length').textContent = b.length;
+        paint();
         boats.classList.remove('is-swapping');
         busy = false;
       }, reduce ? 0 : 320);
@@ -45,6 +64,8 @@
     boats.querySelectorAll('.boats__btn').forEach(function (btn) {
       btn.addEventListener('click', function () { show(+btn.dataset.dir); });
     });
+    slot('prev').addEventListener('click', function () { show(-1); });
+    slot('next').addEventListener('click', function () { show(1); });
     boats.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') show(-1);
       if (e.key === 'ArrowRight') show(1);
@@ -93,13 +114,13 @@
   });
 
   // Fade sections in as they enter.
-  var els = document.querySelectorAll('.reveal');
+  var els = document.querySelectorAll('[data-rv]');
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.01 });
     els.forEach(function (el) { io.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add('is-in'); });
