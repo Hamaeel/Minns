@@ -34,7 +34,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .arr--l { transform: rotate(180deg); }
 
 .water { inset: -5.5px -8px; }
-.water img, .hero__water img { width: 100%; height: 100%; object-fit: cover; }
+.water video, .hero__water video { display: block; width: 100%; height: 100%; object-fit: cover; background: #0a3b63; }
 .water::after, .hero__water::after { content: ""; position: absolute; inset: 0; background: linear-gradient(178.2deg, rgba(6, 42, 67, 0.5) 3.41%, rgba(6, 42, 67, 0) 28.18%); }
 
 .logo { display: block; width: 119px; height: 24px; }
@@ -49,9 +49,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* ---------- 0 + 1: hero ---------- */
 .hero { background: var(--paper); }
 .hero__water { inset: -5.5px -8px; clip-path: inset(0); transition: clip-path 1.4s var(--ease); }
-.hero__nav { left: 46px; top: 40px; display: flex; gap: 32px; font: 14px/normal var(--ui); text-transform: uppercase; color: #fff; }
+/* header text stays at design size on big screens instead of growing with the frame */
+.hero__nav { left: 46px; top: 51px; translate: 0 -50%; display: flex; gap: calc(26px / max(var(--s), 1)); font: calc(12px / max(var(--s), 1))/normal var(--ui); letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
 .hero__logo { left: 589.7px; top: 39.8px; }
-.hero__cta { left: 1006px; top: 30px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(0, 50, 93, 0.6); font: 14px/normal var(--ui); text-transform: uppercase; color: #fff; white-space: nowrap; transition: background 0.3s, opacity 1s var(--ease) 0.5s; }
+.hero__cta { right: 76px; top: 51px; translate: 0 -50%; padding: calc(7px / max(var(--s), 1)) calc(10px / max(var(--s), 1)); border: 1px solid rgba(255, 255, 255, 0.5); background: rgba(0, 50, 93, 0.6); font: calc(12px / max(var(--s), 1))/normal var(--ui); letter-spacing: 0.04em; text-transform: uppercase; color: #fff; white-space: nowrap; transition: background 0.3s, opacity 1s var(--ease) 0.5s; }
 .hero__cta:hover { background: rgba(0, 50, 93, 0.9); }
 .hero__rule { left: 47px; top: 95px; width: 1159px; height: 1px; background: rgba(255, 255, 255, 0.3); transform-origin: 50% 50%; }
 .hero__title { left: 231px; top: 176px; width: 819px; font: 95px/120px var(--serif); text-align: center; color: #fff; }
@@ -171,7 +172,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .hero__title { order: 3; width: 100%; margin-top: 18svh; font-size: 40px; line-height: 48px; }
   .hero__gap { height: 120px; }
   .hero__boat { position: absolute !important; left: 50% !important; top: calc(20px + 24px + 18px + 17px + 18svh + 48px + 13px) !important; width: 300px; height: auto; transform: translateX(-50%); }
-  .hero__cta { order: 4; margin-top: auto; }
+  .hero__cta { order: 4; margin-top: auto; right: auto; translate: none; font-size: 13px; padding: 9px 14px; }
+  .hero__nav { translate: none; }
   .js .is-intro .hero__water { clip-path: inset(36% 12%); }
 
   .intro .stage { padding: 72px 16px; }

@@ -78,6 +78,20 @@
     });
   });
 
+  // Water videos: play only while on screen; keep the still poster for reduced motion.
+  var vids = document.querySelectorAll('.water__video');
+  vids.forEach(function (v) {
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        en.forEach(function (e) {
+          if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+          else v.pause();
+        });
+      }).observe(v.parentNode);
+    }
+  });
+
   // Fade sections in as they enter.
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduce) {
